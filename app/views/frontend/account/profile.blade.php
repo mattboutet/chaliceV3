@@ -51,20 +51,6 @@ Your Profile
 		</div>
 	</div>
 
-	<!-- Gravatar Email -->
-	<div class="control-group{{ $errors->first('gravatar', ' error') }}">
-		<label class="control-label" for="gravatar">Gravatar Email <small>(Private)</small></label>
-		<div class="controls">
-			<input class="span4" type="text" name="gravatar" id="gravatar" value="{{ Input::old('gravatar', $user->gravatar) }}" />
-			{{ $errors->first('gravatar', '<span class="help-block">:message</span>') }}
-		</div>
-
-		<p>
-			<img src="//secure.gravatar.com/avatar/{{ md5(strtolower(trim($user->gravatar))) }}" width="30" height="30" />
-			<a href="http://gravatar.com">Change your avatar at Gravatar.com</a>.
-		</p>
-	</div>
-
 	<hr>
 
 	<!-- Form actions -->

@@ -22,18 +22,4 @@ class User extends SentryUserModel {
 		return "{$this->first_name} {$this->last_name}";
 	}
 
-	/**
-	 * Returns the user Gravatar image url.
-	 *
-	 * @return string
-	 */
-	public function gravatar()
-	{
-		// Generate the Gravatar hash
-		$gravatar = md5(strtolower(trim($this->gravatar)));
-
-		// Return the Gravatar url
-		return "//gravatar.org/avatar/{$gravatar}";
-	}
-
 }
