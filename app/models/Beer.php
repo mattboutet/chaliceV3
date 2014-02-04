@@ -7,4 +7,10 @@ class Beer extends Eloquent {
 		'beer_name' => 'required',
 		'beer_style' => 'required'
 	);
+	
+	public function users() {
+		
+		return $this->belongsToMany('User');
+	
+	}
 }

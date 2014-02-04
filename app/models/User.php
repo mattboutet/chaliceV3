@@ -21,5 +21,12 @@ class User extends SentryUserModel {
 	{
 		return "{$this->first_name} {$this->last_name}";
 	}
+	
+	public function beers() {
+
+		return $this->belongsToMany('Beer');//, 'beer_user');//, 'chalice_list_id', 'beer_id');
+		//return $this->hasManyThrough('Beer', 'beers_lists', 'list_id', 'beer_id');
+
+	}
 
 }
