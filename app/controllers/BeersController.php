@@ -22,11 +22,8 @@ class BeersController extends BaseController {
 	public function index()
 	{
 		$beers = $this->beer->all();
-		print_r('<pre>'.PHP_EOL);
-		//print_r($beers->toSql());
-		print_r(compact('beers'));
-		print_r('</pre>'.PHP_EOL);	
 		return View::make('beers.index', compact('beers'));
+		
 	}
 
 	/**
