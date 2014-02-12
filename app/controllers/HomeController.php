@@ -1,4 +1,5 @@
 <?php
+require_once('simple_html_dom.php');
 
 class HomeController extends BaseController {
 
@@ -34,9 +35,10 @@ class HomeController extends BaseController {
 		return View::make('frontend/chalice/index', compact('beers'));
 	}
 	
-	public function showTapList()
+	public function getTapList()
 	{
-		require_once('simple_html_dom.php');
+		
+		//require_once('simple_html_dom.php');
 		if (Sentry::check()) {
 			
 			$user = Sentry::getUser();
@@ -97,8 +99,8 @@ class HomeController extends BaseController {
 				}
 			}
 		}
-	
-		return View::make('tap_list')->with('list', $list);
+		//this is what's breaking.  I need a view with this name.	
+		return View::make('tapList')->with('list', $list);
 
 	}
 

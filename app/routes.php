@@ -143,7 +143,11 @@ Route::post('contact-us', 'ContactUsController@postIndex');
 
 Route::get('/', array('as' => 'home', 'uses' => 'BlogController@getIndex'));
 //Route::get('chalice', 'HomeController@showTapList');
-Route::resource('taplist', 'HomeController@showTapList');
+Route::get('tapList', 'HomeController@getTapList');
+//Route::get('tap_list', 'HomeController@get_tap_list');
+
+//Route::get('tap_list', 'ListController@get_tap_list');
+
 
 Route::resource('beers', 'BeersController');
 Route::resource('chalices', 'HomeController');

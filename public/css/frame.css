@@ -1,0 +1,138 @@
+html, body {
+  height:100%;
+  overflow:hidden;
+  margin:0;
+  -webkit-text-size-adjust:none;
+}
+body {
+  color:#ffffff;
+  background:#333333;
+}
+body, input, select, textarea, h1, button {
+  font-family:"Hoefler Text", georgia, serif;
+  letter-spacing:0.15em;
+}
+a {
+  text-decoration:none;
+  color:#00e4ff;
+}
+.drank { color:#88f0ff; }
+.notdrank { color:#ff0000; }
+a.selected {
+  color:#d2ff00;
+  font-weight:400;
+}
+a.login {
+  color:#00e4ff;
+  font-size:.5em;
+  vertical-align:top;
+}
+.nav-divider { font-family:"Hoefler Text"; }
+#container {
+  position:relative;
+  overflow-x:hidden;
+}
+#unlock {
+  background:url('../bundles/brschalice/images/chalice.png') no-repeat center top;
+  background-size:180px;
+  padding-top:235px;
+  height:180px;
+}
+#unlock h1 {
+  display:block;
+  font-weight:normal;
+  text-align:center;
+  font-size:36px;
+  line-height:36px;
+  text-transform:uppercase;
+  text-shadow:0 0 5px #ffffff;
+}
+#login { margin:15px 20px; }
+#login input {
+  color:#ffffff;
+  text-shadow:0 0 5px #ffffff;
+  background:transparent;
+  border:none;
+  padding:18px 0;
+  font-size:18px;
+  text-align:center;
+  margin:0 auto;
+  width:100%;
+}
+#user {
+  -webkit-border-top-right-radius:5px;
+  -webkit-border-bottom-right-radius:0;
+  -webkit-border-bottom-left-radius:0;
+  -webkit-border-top-left-radius:5px;
+  -moz-border-radius-topright:5px;
+  -moz-border-radius-bottomright:0;
+  -moz-border-radius-bottomleft:0;
+  -moz-border-radius-topleft:5px;
+  border-top-right-radius:5px;
+  border-bottom-right-radius:0;
+  border-bottom-left-radius:0;
+  border-top-left-radius:5px;
+  -moz-background-clip:padding;
+  -webkit-background-clip:padding-box;
+  background-clip:padding-box;
+  -webkit-box-shadow:inset 0 0 15px rgba(0,0,0,0.4);
+  -moz-box-shadow:inset 0 0 15px rgba(0,0,0,0.4);
+  box-shadow:inset 0 0 15px rgba(0,0,0,0.4);
+  background:#222222;
+  height:50px;
+  margin-bottom:1px;
+}
+#pass {
+  -webkit-border-top-right-radius:0;
+  -webkit-border-bottom-right-radius:5px;
+  -webkit-border-bottom-left-radius:5px;
+  -webkit-border-top-left-radius:0;
+  -moz-border-radius-topright:0;
+  -moz-border-radius-bottomright:5px;
+  -moz-border-radius-bottomleft:5px;
+  -moz-border-radius-topleft:0;
+  border-top-right-radius:0;
+  border-bottom-right-radius:5px;
+  border-bottom-left-radius:5px;
+  border-top-left-radius:0;
+  -moz-background-clip:padding;
+  -webkit-background-clip:padding-box;
+  background-clip:padding-box;
+  -webkit-box-shadow:inset 0 0 15px rgba(0,0,0,0.4);
+  -moz-box-shadow:inset 0 0 15px rgba(0,0,0,0.4);
+  box-shadow:inset 0 0 15px rgba(0,0,0,0.4);
+  background:#222222;
+  height:50px;
+}
+#login-button {
+  color:#ffffff;
+  font-size:18px;
+  position:absolute;
+  bottom:0px;
+  left:50%;
+  margin-left:-75px;
+  width:150px;
+  -webkit-border-top-right-radius:5px;
+  -webkit-border-bottom-right-radius:0;
+  -webkit-border-bottom-left-radius:0;
+  -webkit-border-top-left-radius:5px;
+  -moz-border-radius-topright:5px;
+  -moz-border-radius-bottomright:0;
+  -moz-border-radius-bottomleft:0;
+  -moz-border-radius-topleft:5px;
+  border-top-right-radius:5px;
+  border-bottom-right-radius:0;
+  border-bottom-left-radius:0;
+  border-top-left-radius:5px;
+  -moz-background-clip:padding;
+  -webkit-background-clip:padding-box;
+  background-clip:padding-box;
+  -webkit-box-shadow:inset 0 0 15px rgba(0,0,0,0.4);
+  -moz-box-shadow:inset 0 0 15px rgba(0,0,0,0.4);
+  box-shadow:inset 0 0 15px rgba(0,0,0,0.4);
+  background:#222222;
+  border:none;
+  padding:20px;
+  text-align:center;
+  text-transform:uppercase;
+}
