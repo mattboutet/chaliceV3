@@ -138,16 +138,8 @@ Route::get('about-us', function()
 Route::get('contact-us', array('as' => 'contact-us', 'uses' => 'ContactUsController@getIndex'));
 Route::post('contact-us', 'ContactUsController@postIndex');
 
-//Route::get('blog/{postSlug}', array('as' => 'view-post', 'uses' => 'BlogController@getView'));
-//Route::post('blog/{postSlug}', 'BlogController@postView');
-
 Route::get('/', array('as' => 'home', 'uses' => 'BlogController@getIndex'));
-//Route::get('chalice', 'HomeController@showTapList');
-Route::get('tapList', 'HomeController@getTapList');
-//Route::get('tap_list', 'HomeController@get_tap_list');
-
-//Route::get('tap_list', 'ListController@get_tap_list');
-
+Route::get('tapList', 'ChaliceController@getTapList');
 
 Route::resource('beers', 'BeersController');
-Route::resource('chalices', 'HomeController');
+Route::resource('chalices', 'ChaliceController');
