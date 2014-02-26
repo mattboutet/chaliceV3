@@ -10,6 +10,17 @@ class User extends SentryUserModel {
 	 * @var bool
 	 */
 	protected $softDelete = true;
+	
+	/*public function __construct(array $attributes = array())
+	{
+		//if the user has selected which template (s)he'd like
+		if (Input::has('bare')) {
+			$list = Input::get('bare');
+		} else {//If they didn't pick one (which they can't until I add to template) just populate pivot with defaults
+			
+		}
+		parent::__construct($attributes);
+	}*/
 
 	/**
 	 * Returns the user full name, it simply concatenates

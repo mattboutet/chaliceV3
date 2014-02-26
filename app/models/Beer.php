@@ -13,4 +13,5 @@ class Beer extends Eloquent {
 		return $this->belongsToMany('User');
 	
 	}
+	
 }

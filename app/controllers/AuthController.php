@@ -101,6 +101,7 @@ class AuthController extends BaseController {
 	 */
 	public function postSignup()
 	{
+
 		// Declare the rules for the form validation
 		$rules = array(
 			'first_name'       => 'required|min:3',
@@ -123,6 +124,7 @@ class AuthController extends BaseController {
 
 		try
 		{
+			
 			// Register the user
 			$user = Sentry::register(array(
 				'first_name' => Input::get('first_name'),
@@ -130,7 +132,23 @@ class AuthController extends BaseController {
 				'email'      => Input::get('email'),
 				'password'   => Input::get('password'),
 			));
-
+			$user_id = $user->id;
+			
+			//MWB FIXME -- populate the pivot table
+			if (Input::has('bare')) {
+				$bare_list_id = Input::get('bare');
+			} else {//If they didn't pick (which they can't until I add to template) just populate pivot with defaults
+				$bare_list_id = 1;
+			}
+			
+			$bare_list_obj = Bare::find($bare_list_id);
+			$bare_list = json_decode($bare_list_obj->beer_ids);
+			
+			//attach() will populate the pivot table with all the beer_ids
+			foreach($bare_list as $beer_id){
+				$user->beers()->attach($beer_id);
+			}
+			
 			// Data to be used on the email view
 			$data = array(
 				'user'          => $user,
