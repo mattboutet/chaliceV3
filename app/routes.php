@@ -143,3 +143,5 @@ Route::get('tapList', 'ChaliceController@getTapList');
 
 Route::resource('beers', 'BeersController');
 Route::resource('chalices', 'ChaliceController');
+
+Route::resource('bares', 'BaresController');

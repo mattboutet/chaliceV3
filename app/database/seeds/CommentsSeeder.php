@@ -62,10 +62,10 @@ class CommentsSeeder extends Seeder {
 		);
 
 		// Delete all the posts comments
-		DB::table('comments')->truncate();
+		//DB::table('comments')->truncate();
 
 		// Insert the posts comments
-		Comment::insert($comments);
+		//Comment::insert($comments);
 	}
 
 }
