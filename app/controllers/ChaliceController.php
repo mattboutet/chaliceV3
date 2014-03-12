@@ -1,5 +1,4 @@
 <?php
-require_once('simple_html_dom.php');
 
 class ChaliceController extends BaseController {
 
@@ -16,10 +15,9 @@ class ChaliceController extends BaseController {
 			//for now just grab my user 'cause it's easier and I'm lazy
 			$beers = User::find(1)->beers()->get();
 		}
-		
-		//$beers = $this->beer->all();
 
 		return View::make('frontend/chalice/index', compact('beers'));
+
 	}
 	
 	public function getTapList()
@@ -34,70 +32,40 @@ class ChaliceController extends BaseController {
 		} else {
 			$chaliceList = User::find(1)->beers()->get();
 			
-		} 
-		$url = "http://novareresbiercafe.com/draught.php";
+		} 		
 
-		$html = file_get_html($url);
+		$taps = Tap::all();	
 		
-		
-		//this loops through everything in the list (200+ beers) for each item on tap (~30 beers)- not very efficient
-		foreach($html->find('.draughts_reg p') as $e){
-			if (strlen(html_entity_decode($e->innertext)) > 2){
-				//hacky way of finding actual items and avoiding poorly indicated separators
-				if (!strpos($e->innertext, 'Draughts') &&
-					!strpos($e->innertext, 'On Draught') &&  
-					!strpos($e->innertext, 'On Cask') &&
-					!strpos($e->innertext, 'Weak Sauce') &&
-					!strpos($e->innertext, 'Bottle Pours') &&
-					strlen(html_entity_decode($e->innertext)) > 2) {
-					
-					$searchstring = str_replace(' ', '+', $e->innertext);
-					
-					//this is a hack, but it works ok for now. https://github.com/bannus/novare/blob/master/index.php in the future
-					//Google API Will let me get the first result always too.
-					//http://beeradvocate.com/search?q=searc+terms now works, but will never bring up the #1 result.
-					//untappd api is the shizzle
-					
-					$searchstring = 'http://www.google.com/search?q=site:beeradvocate.com+'.urlencode($searchstring).'&btnI=I';
-					$searchtoo = '<a href="'.$searchstring.'">'.$e->innertext.'</a>';
-					
-					if (isset($chaliceList)){
+		foreach ($taps as $tap){
 
-						foreach ($chaliceList as $beer){
-							
-							$beer_name = $beer->beer_name;
-							$drank = $beer->pivot->checked;
-							//this may need tweaking to get the right distance 3-4 seems about right.
-							if (levenshtein($beer_name, html_entity_decode($e->innertext)) < 4 ) {
-								if ($drank == 1) {
-									$searchtoo = '<a href="'.$searchstring.'" class="drank">'.$e->innertext.'</a>';
-									break;
-								} else {
-									$searchtoo = '<a href="'.$searchstring.'" class="notdrank">'.$e->innertext.'</a>';
-									break;
-								} 
-							}
-						}
+			$search_string = 'http://www.google.com/search?q=site:beeradvocate.com+'.urlencode($tap->tap_name).'&btnI=I';
+			$searchtoo = '<a href="'.$tap->tap_link.'">'.$tap->tap_name.'</a>';
+			
+			if (isset($chaliceList) && isset($tap->beer_id)){
+
+				foreach ($chaliceList as $list_beer){
+					
+					$beer_name = $list_beer->beer_name;
+					$drank = $list_beer->pivot->checked;
+					//this may need tweaking to get the right distance 3-4 seems about right.
+					if (levenshtein($beer_name, html_entity_decode($tap->tap_name)) < 4 ) {
+						if ($drank == 1) {
+							$searchtoo = '<a href="'.$tap->tap_link.'" class="drank">'.$tap->tap_name.'</a>';
+							break;
+						} else {
+							$searchtoo = '<a href="'.$tap->tap_link.'" class="notdrank">'.$tap->tap_name.'</a>';
+							break;
+						} 
 					}
-					
-					$list[] = $searchtoo;
-				} else {
-					$list[] = $e->innertext;
 				}
 			}
+					
+			$list[] = $searchtoo;
+			
 		}
 		//this is what's breaking.  I need a view with this name.	
 		return View::make('tapList')->with('list', $list);
 
-	}
-
-	/*
-	 * I'm trying to allow editing of the extra pivot value 
-	 * representing whether or not the list item has been checked
-	 */
-	public function edit($id){
-		
-		
 	}
 
 }

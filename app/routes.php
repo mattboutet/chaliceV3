@@ -145,3 +145,5 @@ Route::resource('beers', 'BeersController');
 Route::resource('chalices', 'ChaliceController');
 
 Route::resource('bares', 'BaresController');
+
+Route::resource('taps', 'TapsController');
