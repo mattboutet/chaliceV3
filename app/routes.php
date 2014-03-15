@@ -13,7 +13,7 @@ Route::group(array('prefix' => 'admin'), function()
 {
 
 	# Blog Management
-	Route::group(array('prefix' => 'blogs'), function()
+	/*Route::group(array('prefix' => 'blogs'), function()
 	{
 		Route::get('/', array('as' => 'blogs', 'uses' => 'Controllers\Admin\BlogsController@getIndex'));
 		Route::get('create', array('as' => 'create/blog', 'uses' => 'Controllers\Admin\BlogsController@getCreate'));
@@ -22,7 +22,7 @@ Route::group(array('prefix' => 'admin'), function()
 		Route::post('{blogId}/edit', 'Controllers\Admin\BlogsController@postEdit');
 		Route::get('{blogId}/delete', array('as' => 'delete/blog', 'uses' => 'Controllers\Admin\BlogsController@getDelete'));
 		Route::get('{blogId}/restore', array('as' => 'restore/blog', 'uses' => 'Controllers\Admin\BlogsController@getRestore'));
-	});
+	});*/
 
 	# User Management
 	Route::group(array('prefix' => 'users'), function()
@@ -34,6 +34,8 @@ Route::group(array('prefix' => 'admin'), function()
 		Route::post('{userId}/edit', 'Controllers\Admin\UsersController@postEdit');
 		Route::get('{userId}/delete', array('as' => 'delete/user', 'uses' => 'Controllers\Admin\UsersController@getDelete'));
 		Route::get('{userId}/restore', array('as' => 'restore/user', 'uses' => 'Controllers\Admin\UsersController@getRestore'));
+		//Route::post('drinkBeer', 'Controllers\Admin\UsersController@drinkBeer');
+		//Route::post('unDrinkBeer', 'Controllers\Admin\UsersController@unDrinkBeer');
 	});
 
 	# Group Management
@@ -141,9 +143,16 @@ Route::post('contact-us', 'ContactUsController@postIndex');
 Route::get('/', array('as' => 'home', 'uses' => 'BlogController@getIndex'));
 Route::get('tapList', 'ChaliceController@getTapList');
 
+//Route::resource('users', 'UsersController');
+
 Route::resource('beers', 'BeersController');
 Route::resource('chalices', 'ChaliceController');
 
 Route::resource('bares', 'BaresController');
 
 Route::resource('taps', 'TapsController');
+Route::get('Drink/{id}', 'Controllers\Admin\UsersController@drinkBeer');
+Route::post('Drink', 'Controllers\Admin\UsersController@drinkBeer');
+Route::get('unDrink/{id}', 'Controllers\Admin\UsersController@unDrinkBeer');
+Route::post('unDrink', 'Controllers\Admin\UsersController@unDrinkBeer');
+

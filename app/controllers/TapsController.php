@@ -22,8 +22,39 @@ class TapsController extends BaseController {
 	public function index()
 	{
 		$taps = $this->tap->all();
+		
+		if (Sentry::check()) {
+			
+			$user = Sentry::getUser();
+			
+			$chaliceList = $user->beers()->get();
+		} else {
+			//this should maybe be -1 or some sort of special number?
+			//$chaliceList = User::find(1)->beers()->get();
+		} 	
+		
+		$matches = array();
+		foreach ($taps as $tap){
 
-		return View::make('taps.index', compact('taps'));
+			//if we have a chalice list and the beer we're looking at has a nonzero beer_id, check to see if it's on the list
+			if (isset($chaliceList) && $tap->beer_id){
+				
+				foreach ($chaliceList as $list_beer){
+				
+					$beer_name = $list_beer->beer_name;
+					$drank = $list_beer->pivot->checked;
+					
+					if ($tap->beer_id == $list_beer->id){
+						$matches[$list_beer->id] = $drank;
+					}
+				}
+			}
+		}
+
+		/*print_r('<pre>');
+		print_r($matches);	
+		print_r('</pre>');*/
+		return View::make('taps.index', compact('taps', 'matches'));
 	}
 
 	/**

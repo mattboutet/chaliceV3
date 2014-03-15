@@ -387,5 +387,33 @@ class UsersController extends AdminController {
 			return Redirect::route('users')->with('error', $error);
 		}
 	}
+	
+	public function drinkBeer($id) {
+	
+	
+		if (Sentry::check()) {
+			
+			$user = Sentry::getUser();
+			$user->beers->find($id)->pivot->checked = 1;
+			//print_r($checked);
+			//die();
+			$user->beers->find($id)->pivot->save();
+		}
+
+		return Redirect::route('taps.index');
+		//return View::make('taps.edit', compact('tap'));
+	}
+		
+	public function unDrinkBeer($id) {
+	
+		if (Sentry::check()) {
+			
+			$user = Sentry::getUser();
+			$user->beers->find($id)->pivot->checked = 0;
+
+			$user->beers->find($id)->pivot->save();
+		}
+		return Redirect::route('taps.index');
+	}
 
 }

@@ -2,36 +2,33 @@
 
 @section('main')
 
-<h1>All Taps</h1>
-
-<p>{{ link_to_route('taps.create', 'Add new tap') }}</p>
+<h1>Chalice!</h1>
 
 @if ($taps->count())
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>Tap_name</th>
-				<th>Tap_link</th>
+				<th>Beer Name</th>
 			</tr>
 		</thead>
 
 		<tbody>
 			@foreach ($taps as $tap)
 				<tr>
-					<td>{{{ $tap->tap_name }}}</td>
-					<td>{{{ $tap->tap_link }}}</td>
-                    <td>{{ link_to_route('taps.edit', 'Edit', array($tap->id), array('class' => 'btn btn-info')) }}</td>
-                    <td>
-                        {{ Form::open(array('method' => 'DELETE', 'route' => array('taps.destroy', $tap->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-                        {{ Form::close() }}
-                    </td>
+					<td><a href="{{{ $tap->tap_link }}}">{{{ $tap->tap_name }}}</a></td>
+					@if(array_key_exists($tap->beer_id, $matches))
+						@if($matches[$tap->beer_id])
+	                    	<td>{{link_to_action('Controllers\Admin\UsersController@unDrinkBeer', 'UnDrink', array($tap->beer_id), array('class' => 'btn btn-info')) }}</td>
+    					@else
+	                    	<td>{{link_to_action('Controllers\Admin\UsersController@drinkBeer', 'Drink', array($tap->beer_id), array('class' => 'btn btn-info'))}}</td>
+						@endif
+    				@endif                
 				</tr>
 			@endforeach
 		</tbody>
 	</table>
 @else
-	There are no taps
+	There is currently nothing on tap?
 @endif
 
 @stop

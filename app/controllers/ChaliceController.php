@@ -63,7 +63,7 @@ class ChaliceController extends BaseController {
 			$list[] = $searchtoo;
 			
 		}
-		//this is what's breaking.  I need a view with this name.	
+
 		return View::make('tapList')->with('list', $list);
 
 	}
