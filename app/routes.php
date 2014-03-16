@@ -123,18 +123,16 @@ Route::group(array('prefix' => 'account'), function()
 
 Route::get('about-us', function()
 {
-	//
 	return View::make('frontend/about-us');
 });
 
 Route::get('contact-us', array('as' => 'contact-us', 'uses' => 'ContactUsController@getIndex'));
 Route::post('contact-us', 'ContactUsController@postIndex');
 
-//Route::get('/', array('as' => 'home', 'uses' => 'BlogController@getIndex'));
-Route::get('/', array('as' => 'home', 'uses' => 'TapsController@index'));
-Route::get('tapList', 'ChaliceController@getTapList');
 
-//Route::resource('users', 'UsersController');
+Route::get('/', array('as' => 'home', 'uses' => 'TapsController@index'));
+//Route::get('tapList', 'ChaliceController@getTapList');
+
 
 Route::resource('beers', 'BeersController');
 Route::resource('chalices', 'ChaliceController');
