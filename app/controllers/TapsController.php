@@ -51,10 +51,7 @@ class TapsController extends BaseController {
 			}
 		}
 
-		/*print_r('<pre>');
-		print_r($matches);	
-		print_r('</pre>');*/
-		return View::make('taps.index', compact('taps', 'matches'));
+		return View::make('frontend/taps.index', compact('taps', 'matches'));
 	}
 
 	/**

@@ -2,13 +2,13 @@
 
 {{-- Page title --}}
 @section('title')
-About us ::
+About Chalice ::
 @parent
 @stop
 
 {{-- Page content --}}
 @section('content')
 
-About us page.
+We like to drink beer, but hate trying to cross-reference our Chalice list with the current draught list by hand.  This is supposed to help with that.
 
 @stop

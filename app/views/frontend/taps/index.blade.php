@@ -1,14 +1,20 @@
-@extends('layouts.scaffold')
+@extends('frontend/layouts/default')
 
-@section('main')
 
-<h1>Chalice!</h1>
+@section('title')
+Chalice!
+@parent
+@stop
 
+
+{{-- Page content --}}
+@section('content')
 @if ($taps->count())
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
 				<th>Beer Name</th>
+				<th>Drank?</th>
 			</tr>
 		</thead>
 
@@ -22,6 +28,8 @@
     					@else
 	                    	<td>{{link_to_action('Controllers\Admin\UsersController@drinkBeer', 'Drink', array($tap->beer_id), array('class' => 'btn btn-info'))}}</td>
 						@endif
+    				@else
+    					<td></td>
     				@endif                
 				</tr>
 			@endforeach
