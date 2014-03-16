@@ -18,7 +18,7 @@ class ProfileController extends AuthorizedController {
 	{
 		// Get the user information
 		$user = Sentry::getUser();
-
+			
 		// Show the page
 		return View::make('frontend/account/profile', compact('user'));
 	}
@@ -62,5 +62,59 @@ class ProfileController extends AuthorizedController {
 		// Redirect to the settings page
 		return Redirect::route('profile')->with('success', 'Account successfully updated');
 	}
+	
+		/**
+	 * User profile page.
+	 *
+	 * @return View
+	 */
+	public function getList()
+	{
+		// Get the user information
+		$user = Sentry::getUser();
+			
+		$chaliceList = $user->beers()->get();
+
+		// Show the page
+		return View::make('frontend/account/edit-list', compact('user', 'chaliceList'));
+	}
+
+	/**
+	 * User profile form processing page.
+	 *
+	 * @return Redirect
+	 */
+	public function postList()
+	{
+
+		// Grab the user
+		$user = Sentry::getUser();
+		$chalice_list = $user->beers()->get();
+
+		$checked = Input::get('checked');
+		
+		/*
+		 * because of the way html checkboxes work, unchecking something won't submit a value.  to get
+		 * around this, I go through the whole loop, check everything that's checked and uncheck the rest
+		 * inefficient, but works.  
+		 * 
+		 * TODO: This is slow as hell.  There has to be a better way.
+		 */
+		foreach ($chalice_list as $list_beer){
+				
+			if (in_array($list_beer->id, $checked)){
+				
+				$user->beers->find($list_beer->id)->pivot->checked = 1;
+			} else {
+				$user->beers->find($list_beer->id)->pivot->checked = 0;
+			}
+			$user->beers->find($list_beer->id)->pivot->save();
+			
+		}
+	
+		// Redirect to the settings page
+		return Redirect::route('edit-list')->with('success', 'List successfully updated');
+	}
+	
 
 }

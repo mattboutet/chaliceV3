@@ -109,6 +109,10 @@ Route::group(array('prefix' => 'account'), function()
 	# Profile
 	Route::get('profile', array('as' => 'profile', 'uses' => 'Controllers\Account\ProfileController@getIndex'));
 	Route::post('profile', 'Controllers\Account\ProfileController@postIndex');
+	
+	#list
+	Route::get('edit-list', array('as' => 'edit-list', 'uses' => 'Controllers\Account\ProfileController@getList'));
+	Route::post('edit-list', 'Controllers\Account\ProfileController@postList');
 
 	# Change Password
 	Route::get('change-password', array('as' => 'change-password', 'uses' => 'Controllers\Account\ChangePasswordController@getIndex'));
@@ -151,8 +155,10 @@ Route::resource('chalices', 'ChaliceController');
 Route::resource('bares', 'BaresController');
 
 Route::resource('taps', 'TapsController');
+
 Route::get('Drink/{id}', 'Controllers\Admin\UsersController@drinkBeer');
 Route::post('Drink', 'Controllers\Admin\UsersController@drinkBeer');
+
 Route::get('unDrink/{id}', 'Controllers\Admin\UsersController@unDrinkBeer');
 Route::post('unDrink', 'Controllers\Admin\UsersController@unDrinkBeer');
 
