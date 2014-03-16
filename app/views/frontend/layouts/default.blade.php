@@ -6,12 +6,12 @@
 		<meta charset="utf-8" />
 		<title>
 			@section('title')
-			Bootstrap
+			Chalice
 			@show
 		</title>
-		<meta name="keywords" content="your, awesome, keywords, here" />
-		<meta name="author" content="Jon Doe" />
-		<meta name="description" content="Lorem ipsum dolor sit amet, nihil fabulas et sea, nam posse menandri scripserit no, mei." />
+		<meta name="keywords" content="Beer, Chalice, Novare, Draught" />
+		<meta name="author" content="Matt Boutet" />
+		<meta name="description" content="This is a simple app to track your Chalice list at Novare Res." />
 
 		<!-- Mobile Specific Metas
 		================================================== -->
@@ -100,7 +100,7 @@
 
 			<!-- Footer -->
 			<footer>
-				<p>&copy; Company {{ date('Y') }}</p>
+				<p>&copy; Matt Boutet {{ date('Y') }}</p>
 			</footer>
 		</div>
 
