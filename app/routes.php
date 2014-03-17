@@ -135,9 +135,9 @@ Route::get('/', array('as' => 'home', 'uses' => 'TapsController@index'));
 
 
 Route::resource('beers', 'BeersController');
-Route::resource('chalices', 'ChaliceController');
+//Route::resource('chalices', 'ChaliceController');
 
-Route::resource('bares', 'BaresController');
+//Route::resource('bares', 'BaresController');
 
 Route::resource('taps', 'TapsController');
 
