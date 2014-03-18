@@ -1,8 +1,5 @@
 @extends('frontend/layouts/default')
 
-
-@section('title')
-Chalice!
 @parent
 @stop
 

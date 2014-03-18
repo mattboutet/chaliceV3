@@ -21,7 +21,7 @@
 		================================================== -->
 		<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 		<link href="{{ asset('assets/css/bootstrap-responsive.min.css') }}" rel="stylesheet">
-		<link href="{{ asset('css/frame.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/css/frame.css') }}" rel="stylesheet">
 
 		<style>
 		@section('styles')
