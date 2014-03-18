@@ -3,6 +3,11 @@ html, body {
   margin:0;
   -webkit-text-size-adjust:none;
 }
+
+.table-striped tbody > tr:nth-child(odd) > td,
+.table-striped tbody > tr:nth-child(odd) > th {
+  background-color: #333333;
+}
 body {
   color:#ffffff;
   background:#333333;
