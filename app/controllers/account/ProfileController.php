@@ -76,7 +76,7 @@ class ProfileController extends AuthorizedController {
 		$chaliceList = $user->beers()->get();
 
 		// Show the page
-		return View::make('frontend/account/edit-list', compact('user', 'chaliceList'));
+		return View::make('frontend/account/list', compact('user', 'chaliceList'));
 	}
 
 	/**
@@ -113,7 +113,7 @@ class ProfileController extends AuthorizedController {
 		}
 	
 		// Redirect to the settings page
-		return Redirect::route('edit-list')->with('success', 'List successfully updated');
+		return Redirect::route('list')->with('success', 'List successfully updated');
 	}
 	
 

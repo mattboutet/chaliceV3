@@ -395,13 +395,11 @@ class UsersController extends AdminController {
 			
 			$user = Sentry::getUser();
 			$user->beers->find($id)->pivot->checked = 1;
-			//print_r($checked);
-			//die();
+			
 			$user->beers->find($id)->pivot->save();
+			
 		}
-
-		return Redirect::route('taps.index');
-		//return View::make('taps.edit', compact('tap'));
+		return Redirect::route('home')->with('marked', $user->beers->find($id)->beer_name);
 	}
 		
 	public function unDrinkBeer($id) {
@@ -413,7 +411,7 @@ class UsersController extends AdminController {
 
 			$user->beers->find($id)->pivot->save();
 		}
-		return Redirect::route('taps.index');
+		return Redirect::route('home')->with('unmarked', $user->beers->find($id)->beer_name);
 	}
 
 }

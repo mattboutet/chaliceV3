@@ -21,6 +21,7 @@ class TapsController extends BaseController {
 	 */
 	public function index()
 	{
+		
 		$taps = $this->tap->all();
 		
 		if (Sentry::check()) {
@@ -34,7 +35,16 @@ class TapsController extends BaseController {
 		} 	
 		
 		$matches = array();
-		foreach ($taps as $tap){
+		
+		//this sort of makes my eyes bleed, but it doesn't look like sortBy supports order specification
+		$taps = $taps->sortBy((function($tap)
+			{
+				return $tap->beer_id;
+			}
+		))->reverse();
+		
+		
+		foreach ($taps as $i => $tap){
 
 			//if we have a chalice list and the beer we're looking at has a nonzero beer_id, check to see if it's on the list
 			if (isset($chaliceList) && $tap->beer_id){

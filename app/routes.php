@@ -97,8 +97,8 @@ Route::group(array('prefix' => 'account'), function()
 	Route::post('profile', 'Controllers\Account\ProfileController@postIndex');
 	
 	#list
-	Route::get('edit-list', array('as' => 'edit-list', 'uses' => 'Controllers\Account\ProfileController@getList'));
-	Route::post('edit-list', 'Controllers\Account\ProfileController@postList');
+	Route::get('list', array('as' => 'list', 'uses' => 'Controllers\Account\ProfileController@getList'));
+	Route::post('list', 'Controllers\Account\ProfileController@postList');
 
 	# Change Password
 	Route::get('change-password', array('as' => 'change-password', 'uses' => 'Controllers\Account\ChangePasswordController@getIndex'));

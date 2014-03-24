@@ -9,12 +9,16 @@
 		<a href="{{ URL::to('about-us') }}" class="button button-primary">Learn more</a>
 	</div>
 </header>
-
+@if ($message = Session::get('marked'))
+	<pre>You successfully checked {{$message}} off your Chalice list</pre>
+@elseif ($message = Session::get('unmarked'))
+	<pre>You successfully returned {{$message}} to you to-drink list</pre>
+@endif 
 @if ($taps->count())
 	<div class="main-content">
 		<nav class="beer-lists" role="navigation">
 			<a href="{{ route('home') }}" class="button{{ (Request::is('/') ? ' active' : '') }}">On tap</a>
-			<a href="{{ route('edit-list') }}" class="button{{ (Request::is('edit-list') ? ' active' : '') }}">Your list</a>
+			<a href="{{ route('list') }}" class="button{{ (Request::is('list') ? ' active' : '') }}">Your list</a>
 		</nav>
 
 		<ul class="beer">
