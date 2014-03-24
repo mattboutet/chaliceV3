@@ -2,58 +2,47 @@
 
 {{-- Page title --}}
 @section('title')
-Account Sign in ::
+Login ::
 @parent
 @stop
 
 {{-- Page content --}}
 @section('content')
-<div class="page-header">
-	<h3>Sign in into your account</h3>
-</div>
-<div class="row">
-	<form method="post" action="{{ route('signin') }}" class="form-horizontal">
+
+<header class="main-header">
+	<h2 class="main-title text-center">Login</h2>
+</header>
+
+<div class="main-content squish">
+	<form method="post" action="{{ route('signin') }}" class="form-profile form-login">
 		<!-- CSRF Token -->
 		<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
 		<!-- Email -->
-		<div class="control-group{{ $errors->first('email', ' error') }}">
-			<label class="control-label" for="email">Email</label>
-			<div class="controls">
-				<input type="text" name="email" id="email" value="{{ Input::old('email') }}" />
-				{{ $errors->first('email', '<span class="help-block">:message</span>') }}
-			</div>
-		</div>
+		<p class="{{ $errors->first('email', 'error') }}">
+			<label for="email">Email</label>
+			<input type="text" name="email" id="email" value="{{ Input::old('email') }}" required>
+			{{ $errors->first('email', '<span class="help-block">:message</span>') }}
+		</p>
 
 		<!-- Password -->
-		<div class="control-group{{ $errors->first('password', ' error') }}">
-			<label class="control-label" for="password">Password</label>
-			<div class="controls">
-				<input type="password" name="password" id="password" value="" />
-				{{ $errors->first('password', '<span class="help-block">:message</span>') }}
-			</div>
-		</div>
+		<p class="{{ $errors->first('password', 'error') }}">
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password" value="" required>
+			{{ $errors->first('password', '<span class="help-block">:message</span>') }}
+		</p>
 
 		<!-- Remember me -->
-		<div class="control-group">
-			<div class="controls">
+		<p>
 			<label class="checkbox">
-				<input type="checkbox" name="remember-me" id="remember-me" value="1" /> Remember me
+				<input type="checkbox" name="remember-me" id="remember-me" checked> Remember me
 			</label>
-			</div>
-		</div>
-
-		<hr>
+		</p>
 
 		<!-- Form actions -->
-		<div class="control-group">
-			<div class="controls">
-				<a class="btn" href="{{ route('home') }}">Cancel</a>
-
-				<button type="submit" class="btn">Sign in</button>
-
-				<a href="{{ route('forgot-password') }}" class="btn btn-link">I forgot my password</a>
-			</div>
+		<p><button type="submit" class="button button-primary">Login</button></p>
+		<div class="form-forgot">
+			<a href="{{ route('forgot-password') }}">Forgot your password?</a>
 		</div>
 	</form>
 </div>

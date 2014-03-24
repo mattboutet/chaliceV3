@@ -1,52 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 9]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]> <html class="no-js lt-ie10 ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 	<head>
-		<!-- Basic Page Needs
-		================================================== -->
-		<meta charset="utf-8" />
+		<!-- Title, meta -->
 		<title>
 			@section('title')
-			Chalice
+				Chalice App
 			@show
 		</title>
-		<meta name="keywords" content="Beer, Chalice, Novare, Draught" />
-		<meta name="author" content="Matt Boutet" />
-		<meta name="description" content="This is a simple app to track your Chalice list at Novare Res." />
+		<meta name="description" content="Track & complete your chalice list from anywhere! This web app was built by Big Room Studios for Novare Res Bier Café in Portland, Maine.">
+		<meta name="author" content="Matt Boutet">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="ClearType" content="true">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!-- Mobile Specific Metas
-		================================================== -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- DNS prefetch -->
+		<link rel="dns-prefetch" href="//ajax.googleapis.com">
+		<link rel="dns-prefetch" href="//www.google-analytics.com">
 
-		<!-- CSS
-		================================================== -->
-		<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-		<link href="{{ asset('assets/css/bootstrap-responsive.min.css') }}" rel="stylesheet">
-		<link href="{{ asset('assets/css/frame.css') }}" rel="stylesheet">
+		<!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset('assets/ico/apple-touch-icon-152x152-precomposed.png') }}">
+		<!-- For iPad with high-resolution Retina display running iOS ≤ 6: -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('assets/ico/apple-touch-icon-144x144-precomposed.png') }}">
+		<!-- For iPhone with high-resolution Retina display running iOS ≥ 7: -->
+		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset('assets/ico/apple-touch-icon-120x120-precomposed.png') }}">
+		<!-- For iPhone with high-resolution Retina display running iOS ≤ 6: -->
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('assets/ico/apple-touch-icon-114x114-precomposed.png') }}">
+		<!-- For the iPad mini and the first- and second-generation iPad on iOS ≥ 7: -->
+		<link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset('assets/ico/apple-touch-icon-76x76-precomposed.png') }}">
+		<!-- For the iPad mini and the first- and second-generation iPad on iOS ≤ 6: -->
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('assets/ico/apple-touch-icon-72x72-precomposed.png') }}">
+		<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+		<link rel="apple-touch-icon-precomposed" href="{{ asset('assets/ico/apple-touch-icon-precomposed.png') }}">
+		<!-- For desktop browsers -->
+		<link rel="shortcut icon" href="{{ asset('assets/ico/favicon.ico') }}">
 
-		<style>
-		@section('styles')
-		body {
-			padding: 10px 0;
-		}
-		@show
-		</style>
+		<!-- Styles -->
+		<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
-		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-		<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
+		<!-- Modernizr -->
+		<script src="{{ asset('assets/js/vendor/modernizr-2.7.1.min.js') }}"></script>
 
-		<!-- Favicons
-		================================================== -->
-		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('assets/ico/apple-touch-icon-144-precomposed.png') }}">
-		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('assets/ico/apple-touch-icon-114-precomposed.png') }}">
-		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('assets/ico/apple-touch-icon-72-precomposed.png') }}">
-		<link rel="apple-touch-icon-precomposed" href="{{ asset('assets/ico/apple-touch-icon-57-precomposed.png') }}">
-		<link rel="shortcut icon" href="{{ asset('assets/ico/favicon.png') }}">
+		<!-- Typekit -->
+		<script type="text/javascript" src="//use.typekit.net/xvf5iym.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	</head>
 
 	<body>
-		<!-- Container -->
+		<!-- Site -->
+		<div class="site" role="document">
+			<!-- Header -->
+			<header class="site-toolbar" role="banner">
+				<div class="wrapper cf">
+					<h1 class="site-name"><a href="{{ route('home') }}">Chalice</a></h1>
+					<nav class="toolbar-nav" role="navigation">
+						@if (Sentry::check())
+							<span class="greeting">Welcome, {{ Sentry::getUser()->first_name }}!</span>
+							<a href="{{ route('profile') }}" class="button button-secondary">Profile</a>
+							<a href="{{ route('logout') }}" class="button button">Logout</a>
+						@else
+							<a href="{{ route('signup') }}" class="button button-secondary">Join</a>
+							<a href="{{ route('signin') }}" class="button button">Login</a>
+						@endif
+					</nav>
+				</div>
+			</header>
+			
+			<!-- Main -->
+			<main role="main" class="site-main">
+				<div class="wrapper">
+					@include('frontend/notifications')
+					@yield('content')
+				</div>
+			</main>
+
+			<!-- Footer -->
+			<footer class="site-credits" role="contentinfo">
+				<div class="wrapper">
+					@if(is_object(Sentry::getUser()) && Sentry::getUser()->hasAccess('admin'))
+						<p><a href="{{ route('admin') }}" class="button button-primary">Admin</a></p>
+					@endif
+					Built by Matt Boutet<br>Powered by <a href="http://bigroomstudios.com">Big Room Studios</a>
+				</div>
+			</footer>
+		</div>
+
+		<!-- jQuery -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script>window.jQuery || document.write("<script src=\"{{ asset('assets/js/vendor/jquery-2.0.3.min.js') }}\"><\/script>")</script>
+
+		<!-- Scripts -->
+		<script src="{{ asset('assets/js/plugins.js') }}"></script>
+		<script src="{{ asset('assets/js/main.js') }}"></script>
+
+		<!-- Google Analytics (async) -->
+		<script>
+		(function(c,a,r,d,n,l){c.GoogleAnalyticsObject=d;c[d]||(c[d]=
+		function(){(c[d].q=c[d].q||[]).push(arguments)});c[d].d=+new Date;
+		n=a.createElement(r);l=a.getElementsByTagName(r)[0];
+		n.src='//www.google-analytics.com/analytics.js';
+		l.parentNode.insertBefore(n,l)}(window,document,'script','ga'));
+		ga('create','UA-XXXXXXXX-XX');ga('send','pageview');
+		</script>
+
+		{{--<!-- Container -->
 		<div class="container">
 			<!-- Navbar -->
 			<div class="navbar navbar-inverse">
@@ -109,6 +168,6 @@
 		<!-- Javascripts
 		================================================== -->
 		<script src="{{ asset('assets/js/jquery.1.10.2.min.js') }}"></script>
-		<script src="{{ asset('assets/js/bootstrap/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('assets/js/bootstrap/bootstrap.min.js') }}"></script>--}}
 	</body>
 </html>

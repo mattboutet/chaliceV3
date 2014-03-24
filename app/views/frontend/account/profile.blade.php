@@ -7,9 +7,9 @@ Your Profile
 
 {{-- Account page content --}}
 @section('account-content')
-<div class="page-header">
-	<h4>Update your Profile</h4>
-</div>
+<header class="main-header">
+	<h2 class="main-title text-center">Your profile</h2>
+</header>
 
 <form method="post" action="" class="form-vertical" autocomplete="off">
 	<!-- CSRF Token -->
