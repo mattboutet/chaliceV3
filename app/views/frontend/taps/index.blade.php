@@ -20,7 +20,7 @@
 			<a href="{{ route('home') }}" class="button{{ (Request::is('/') ? ' active' : '') }}">On tap</a>
 			<a href="{{ route('list') }}" class="button{{ (Request::is('list') ? ' active' : '') }}">Your list</a>
 		</nav>
-
+		<input class="search-beers" type="text" placeholder="Find Beer">
 		<ul class="beer">
 			@foreach ($taps as $tap)
 				@if(array_key_exists($tap->beer_id, $matches))
@@ -46,6 +46,11 @@
 					</div>
 				</li>
 			@endforeach
+			
+			<li class="beer-item-empty">
+				<h3 class="beer-title">We couldn't find any beers!</h3>
+			</li>
+			
 		</ul>
 	</div>
 @else

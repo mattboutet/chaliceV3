@@ -338,7 +338,8 @@ h2, .h2,
 h3, .h3,
 h4, .h4,
 h5, .h5,
-h6, .h6 {
+h6, .h6,
+.search-beers {
     margin: 0 0 0.75rem;
     color: #fff;
     font-weight: 400;
@@ -348,7 +349,7 @@ h6, .h6 {
 }
 
 h1, .h1 { font-size: 2.369rem; }
-h2, .h2 { font-size: 1.777rem; }
+h2, .h2, .search-beers { font-size: 1.777rem; }
 h3, .h3 { font-size: 1.333rem; }
 
 h4, .h4,
@@ -1607,12 +1608,27 @@ textarea {
     list-style: none;
 }
 
-.beer-item {
+input.search-beers {
+    border: 2px solid #41415B;
+    height: auto;
+    margin: 0;
+}
+
+.beer-item, .beer-item-empty {
     display: table;
     padding: 0.75rem 1rem;
     width: 100%;
     border-bottom: 2px solid #41415b;
     background-color: #2c2c3d;
+}
+
+.beer-item-empty {
+    display: none;
+    background-color: #41415B;
+}
+
+.beer-item-empty .beer-title {
+    color: #DDD;
 }
 
 form .beer-item {
@@ -1686,11 +1702,16 @@ form .beer-item {
 }
 
 @media screen and (min-width: 600px) {
+    
+    input.search-beers {
+        height: 5rem;
+    }
+    
     .beer-lists a {
         padding: 14px 18px;
     }
 
-    .beer-item {
+    .beer-item, .beer-item-empty {
         padding: 1rem;
     }
 

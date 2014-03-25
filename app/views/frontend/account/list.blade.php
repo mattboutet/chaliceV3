@@ -20,7 +20,7 @@ Your list ::
 		<a href="{{ route('home') }}" class="button{{ (Request::is('/') ? ' active' : '') }}">On tap</a>
 		<a href="{{ route('list') }}" class="button{{ (Request::is('account/list') ? ' active' : '') }}">Your list</a>
 	</nav>
-
+	<input class="search-beers" type="text" placeholder="Find Beer">
 	<form method="post" action="" autocomplete="off">
 		<!-- CSRF Token -->
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -40,11 +40,14 @@ Your list ::
 							@else
 								{{link_to_action('Controllers\Account\ProfileController@drinkBeer', '', array($beer->id), array('class' => 'beer-icon', 'title' => 'Drink this!'))}}
 							@endif
-							{{--<div class="beer-icon"></div>
-							{{Form::checkbox("checked[]", $beer->id, $beer->pivot->checked)}}--}}
 						</div>
 					</li>
 				@endforeach
+				
+				<li class="beer-item-empty">
+					<h3 class="beer-title">We couldn't find any beers!</h3>
+				</li>
+				
 			</ul>
 
 			{{--<table class="table table-striped table-bordered">
