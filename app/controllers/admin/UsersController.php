@@ -390,16 +390,17 @@ class UsersController extends AdminController {
 	
 	public function drinkBeer($id) {
 	
-	
 		if (Sentry::check()) {
-			
+				
 			$user = Sentry::getUser();
+		
 			$user->beers->find($id)->pivot->checked = 1;
 			
 			$user->beers->find($id)->pivot->save();
-			
+			return Redirect::route('home')->with('success', 'Successfully checked off '.$user->beers->find($id)->beer_name);			
 		}
-		return Redirect::route('home')->with('marked', $user->beers->find($id)->beer_name);
+		
+		//return Redirect::route('home')->with('marked', $user->beers->find($id)->beer_name);
 	}
 		
 	public function unDrinkBeer($id) {
@@ -410,8 +411,10 @@ class UsersController extends AdminController {
 			$user->beers->find($id)->pivot->checked = 0;
 
 			$user->beers->find($id)->pivot->save();
+			return Redirect::route('home')->with('success', 'Successfully put '.$user->beers->find($id)->beer_name.' back on your to-drink list');
 		}
-		return Redirect::route('home')->with('unmarked', $user->beers->find($id)->beer_name);
+		
+		//return Redirect::route('home')->with('unmarked', $user->beers->find($id)->beer_name);
 	}
 
 }
