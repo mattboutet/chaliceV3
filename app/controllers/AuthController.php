@@ -163,7 +163,7 @@ class AuthController extends BaseController {
 			});
 
 			// Redirect to the register page
-			return Redirect::back()->with('success', Lang::get('auth/message.signup.success'));
+			return Redirect::route('home')->with('success', Lang::get('auth/message.signup.success'));
 		}
 		catch (Cartalyst\Sentry\Users\UserExistsException $e)
 		{
