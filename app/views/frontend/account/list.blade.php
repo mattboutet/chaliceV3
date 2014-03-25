@@ -68,7 +68,6 @@ Your list ::
 			There is currently nothing on tap?
 		@endif
 		<br>
-		<button type="submit" class="button button-primary">Update list</button>
 	</form>
 	@stop
 </div>
