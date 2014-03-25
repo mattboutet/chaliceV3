@@ -30,7 +30,7 @@ class Tap extends Eloquent {
 					!strpos($e->innertext, 'Bottle Pours') &&
 					strlen(html_entity_decode($e->innertext)) > 2) {
 					
-					$search_string = str_replace(' ', '+', $e->innertext);
+					$search_string = str_replace(' ', '+', strip_tags($e->innertext));
 					
 					//this is a hack, but it works ok for now. https://github.com/bannus/novare/blob/master/index.php in the future
 					//untappd api is the shizzle - if only they'd give me a key
@@ -39,7 +39,7 @@ class Tap extends Eloquent {
 					
 					
 					$tap =  new Tap;
-					$tap->tap_name = $e->innertext;
+					$tap->tap_name = strip_tags($e->innertext);
 					$tap->tap_link = $search_string;
 					
 					foreach ($beers as $beer){
