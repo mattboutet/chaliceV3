@@ -17,9 +17,9 @@ About Chalice ::
 <div class="main-content squish">
 	<p>Chalice is a free web app, which you can use to track and update your beer list at one of our favorite bars, <a href="http://novareresbiercafe.com/">Novare Res</a> in Portland, Maine.</p>
 
-	<p>Many patrons like us, here at <a href="http://bigroomstudios.com">BRS</a>, participate in “The Uprising” challenge to drink every beer on their list. It’s a long list. If you try all the beers on their list, you win a kick-ass chalice.</p>
+	<p>Many patrons like us, here at <a href="http://bigroomstudios.com">BRS</a>, participate in “The Uprising” challenge to drink every beer on their list. It’s a long list. If you try all the beers on their list, you're awarded a kick-ass chalice.</p>
 
-	<p>Currently, you can only track your progress with pen and paper, which is risky. If you lose your list you have to start over! We made Chalice, so that we can track our progress from our phones, via this simple web app.</p>
+	<p>Currently, you can only track your progress with pen and paper, which is risky. If you lose your list you have to start over, and it's always a challenge trying to figure out what's on your list and also currently on tap. We made Chalice, so that we can track our progress from our phones, via this simple web app.</p>
 
 	<h3 class="h2">How it works</h3>
 

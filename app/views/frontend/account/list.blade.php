@@ -29,14 +29,19 @@ Your list ::
 			<ul class="beer">
 				@foreach ($chaliceList as $beer)
 					@if ($beer->pivot->checked)
-					<li class="beer-item drunk">
+					<li class="beer-item drunk" id="{{{$beer->id}}}">
 					@else
-					<li class="beer-item">
+					<li class="beer-item" id="{{{$beer->id}}}">
 					@endif
 						<h3 class="beer-title">{{{ $beer->beer_name }}}</h3>
-						<div class="beer-action">
-							<div class="beer-icon"></div>
-							{{Form::checkbox("checked[]", $beer->id, $beer->pivot->checked)}}
+						<div class="beer-action" id="{{{$beer->id}}}">
+							@if ($beer->pivot->checked)
+								{{link_to_action('Controllers\Account\ProfileController@unDrinkBeer', '', array($beer->id), array('class' => 'beer-icon', 'title' => 'Undrink this!', 'beer_id' => $beer->id)) }}
+							@else
+								{{link_to_action('Controllers\Account\ProfileController@drinkBeer', '', array($beer->id), array('class' => 'beer-icon', 'title' => 'Drink this!'))}}
+							@endif
+							{{--<div class="beer-icon"></div>
+							{{Form::checkbox("checked[]", $beer->id, $beer->pivot->checked)}}--}}
 						</div>
 					</li>
 				@endforeach

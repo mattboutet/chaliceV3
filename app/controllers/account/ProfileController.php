@@ -2,7 +2,9 @@
 
 use AuthorizedController;
 use Input;
+use Request;
 use Redirect;
+use Response;
 use Sentry;
 use Validator;
 use View;
@@ -184,6 +186,7 @@ class ProfileController extends AuthorizedController {
 
 	public function drinkBeer($id) {
 	
+
 		if (Sentry::check()) {
 				
 			$user = Sentry::getUser();
@@ -191,10 +194,13 @@ class ProfileController extends AuthorizedController {
 			$user->beers->find($id)->pivot->checked = 1;
 			
 			$user->beers->find($id)->pivot->save();
-			return Redirect::route('home')->with('success', 'Successfully checked off '.$user->beers->find($id)->beer_name);			
+			$message = 'Successfully checked off '.$user->beers->find($id)->beer_name;
+			if (Request::ajax()){
+				return Response::json($message);
+			} else {
+				return Redirect::route('home')->with('success', $message);
+			}			
 		}
-		
-		//return Redirect::route('home')->with('marked', $user->beers->find($id)->beer_name);
 	}
 		
 	public function unDrinkBeer($id) {
@@ -205,10 +211,13 @@ class ProfileController extends AuthorizedController {
 			$user->beers->find($id)->pivot->checked = 0;
 
 			$user->beers->find($id)->pivot->save();
-			return Redirect::route('home')->with('success', 'Successfully put '.$user->beers->find($id)->beer_name.' back on your to-drink list');
+			$message = 'Successfully put '.$user->beers->find($id)->beer_name.' back on your to-drink list';
+			if (Request::ajax()){
+					return Response::json($message);
+			} else {
+				return Redirect::route('home')->with('success', $message);
+			}
 		}
-		
-		//return Redirect::route('home')->with('unmarked', $user->beers->find($id)->beer_name);
 	}
 	
 
