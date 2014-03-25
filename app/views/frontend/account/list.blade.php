@@ -33,7 +33,7 @@ Your list ::
 					@else
 					<li class="beer-item" id="{{{$beer->id}}}">
 					@endif
-						<h3 class="beer-title">{{{ $beer->beer_name }}}</h3>
+						<h3 class="beer-title"><a href="http://www.google.com/search?q=site:beeradvocate.com+{{{$beer->beer_name}}}" title="{{{ $beer->beer_name }}}" target="_blank">{{{ $beer->beer_name }}}</h3>
 						<div class="beer-action" id="{{{$beer->id}}}">
 							@if ($beer->pivot->checked)
 								{{link_to_action('Controllers\Account\ProfileController@unDrinkBeer', '', array($beer->id), array('class' => 'beer-icon', 'title' => 'Undrink this!', 'beer_id' => $beer->id)) }}
