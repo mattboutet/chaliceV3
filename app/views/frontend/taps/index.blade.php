@@ -37,9 +37,9 @@
 					<div class="beer-action">
 						@if(array_key_exists($tap->beer_id, $matches))
 							@if($matches[$tap->beer_id])
-								{{link_to_action('Controllers\Admin\UsersController@unDrinkBeer', '', array($tap->beer_id), array('class' => 'beer-icon', 'title' => 'Undrink this!')) }}
+								{{link_to_action('Controllers\Account\ProfileController@unDrinkBeer', '', array($tap->beer_id), array('class' => 'beer-icon', 'title' => 'Undrink this!')) }}
 							@else
-								{{link_to_action('Controllers\Admin\UsersController@drinkBeer', '', array($tap->beer_id), array('class' => 'beer-icon', 'title' => 'Drink this!'))}}
+								{{link_to_action('Controllers\Account\ProfileController@drinkBeer', '', array($tap->beer_id), array('class' => 'beer-icon', 'title' => 'Drink this!'))}}
 							@endif
 						@else
 						@endif
@@ -79,9 +79,9 @@
 					<td><a href="{{{ $tap->tap_link }}}">{{{ $tap->tap_name }}}</a></td>
 					@if(array_key_exists($tap->beer_id, $matches))
 						@if($matches[$tap->beer_id])
-	                    	<td>{{link_to_action('Controllers\Admin\UsersController@unDrinkBeer', 'UnDrink', array($tap->beer_id), array('class' => 'btn btn-info')) }}</td>
+	                    	<td>{{link_to_action('Controllers\Account\ProfileController@unDrinkBeer', 'UnDrink', array($tap->beer_id), array('class' => 'btn btn-info')) }}</td>
     					@else
-	                    	<td>{{link_to_action('Controllers\Admin\UsersController@drinkBeer', 'Drink', array($tap->beer_id), array('class' => 'btn btn-info'))}}</td>
+	                    	<td>{{link_to_action('Controllers\Account\ProfileController@drinkBeer', 'Drink', array($tap->beer_id), array('class' => 'btn btn-info'))}}</td>
 						@endif
     				@else
     					<td></td>

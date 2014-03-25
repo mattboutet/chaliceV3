@@ -141,9 +141,9 @@ Route::resource('beers', 'BeersController');
 
 Route::resource('taps', 'TapsController');
 
-Route::get('Drink/{id}', 'Controllers\Admin\UsersController@drinkBeer');
-Route::post('Drink', 'Controllers\Admin\UsersController@drinkBeer');
+Route::get('Drink/{id}', 'Controllers\Account\ProfileController@drinkBeer');
+Route::post('Drink', 'Controllers\Account\ProfileController@drinkBeer');
 
-Route::get('unDrink/{id}', 'Controllers\Admin\UsersController@unDrinkBeer');
-Route::post('unDrink', 'Controllers\Admin\UsersController@unDrinkBeer');
+Route::get('unDrink/{id}', 'Controllers\Account\ProfileController@unDrinkBeer');
+Route::post('unDrink', 'Controllers\ccount\ProfileController@unDrinkBeer');
 
