@@ -26,7 +26,9 @@ Forgot your password? ::
 		</p>
 
 		<!-- Form actions -->
-		<button type="submit" class="button button-primary">Reset password</button>
+		<p><button type="submit" class="button button-primary">Reset password</button></p>
+
+		<div class="form-forgot">&larr; <a href="{{ route('signin') }}">Back to login</a></div>
 	</form>
 </div>
 @stop
