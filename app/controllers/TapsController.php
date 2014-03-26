@@ -45,6 +45,7 @@ class TapsController extends BaseController {
 		
 		
 		foreach ($taps as $i => $tap){
+			//$description = Beer::untappdLookup($tap->tap_name);
 
 			//if we have a chalice list and the beer we're looking at has a nonzero beer_id, check to see if it's on the list
 			if (isset($chaliceList) && $tap->beer_id){

@@ -190,7 +190,8 @@ class ProfileController extends AuthorizedController {
 		if (Sentry::check()) {
 				
 			$user = Sentry::getUser();
-		
+			$user->beers->find($id)->untappdLookup();
+			die();
 			$user->beers->find($id)->pivot->checked = 1;
 			
 			$user->beers->find($id)->pivot->save();
