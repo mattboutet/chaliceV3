@@ -8,7 +8,7 @@ $(function() {
 	$('.beer-icon').on('click', function(e) {
 		e.preventDefault();
 		//console.log('boo');
-		var beer_id   = $(this).closest('.beer-action').attr('id'),
+		var beer_id   = $(this).closest('.beer-item').attr('id'),
 			beer_item = $(this).closest('.beer-item'),
 			$checkbox = $(this).find(':checkbox');
 
@@ -65,7 +65,7 @@ $(function() {
 			
 			// just do a substring match
 			return (thisBeerName.indexOf(searchName) !== -1);
-			
+
 		});
 		
 		// these elements don't match the search terms

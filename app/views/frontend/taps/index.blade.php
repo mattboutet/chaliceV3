@@ -30,15 +30,23 @@
 	
 	<ul class="beer">
 		@foreach ($taps as $tap)
-			<li class="beer-item">
+			@if(array_key_exists($tap->beer_id, $matches))
+				@if($matches[$tap->beer_id])
+					<li class="beer-item drunk" id="{{{$tap->beer_id}}}">
+				@else
+					<li class="beer-item" id="{{{$tap->beer_id}}}">
+				@endif
+			@else
+			<li class="beer-item" id="{{{$tap->beer_id}}}">
+			@endif
 				<h3 class="beer-title"><a href="{{{ $tap->tap_link }}}" title="{{{ $tap->tap_name }}}" target="_blank">{{{ $tap->tap_name }}}</a></h3>
 
-				<div class="beer-action" id="{{{$tap->beer_id}}}">
+				<div class="beer-action">
 					@if(array_key_exists($tap->beer_id, $matches))
+						<span class="on-list">On list</span>
 						@if($matches[$tap->beer_id])
 							{{link_to_action('Controllers\Account\ProfileController@unDrinkBeer', '', array($tap->beer_id), array('class' => 'beer-icon', 'title' => 'Undrink this!', 'beer_id' => $tap->beer_id)) }}
 						@else
-							<span class="on-list">On list</span>
 							{{link_to_action('Controllers\Account\ProfileController@drinkBeer', '', array($tap->beer_id), array('class' => 'beer-icon', 'title' => 'Drink this!'))}}
 						@endif
 					@else
