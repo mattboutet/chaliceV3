@@ -1821,9 +1821,21 @@ textarea {
 }
 
 .form-join,
-.form-login {
+.form-login,
+.form-forgot {
     margin: 0 auto;
     max-width: 480px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-top: 2px solid #41415b;
+    border-bottom: 2px solid #41415b;
+}
+
+.form-join .button,
+.form-login .button,
+.form-forgot .button {
+    padding: 10px 14px;
+    width: 100%;
 }
 
 .form-required {
@@ -1836,32 +1848,11 @@ textarea {
     font-size: 0.75rem;
 }
 
-.form-forgot {
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.75rem;
-}
-
 .form-profile label {
     margin-bottom: 4px;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 0.875rem;
-}
-
-.form-join,
-.form-login {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    border-top: 2px solid #41415b;
-    border-bottom: 2px solid #41415b;
-}
-
-.form-join .button,
-.form-login .button {
-    padding: 10px 14px;
-    width: 100%;
 }
 
 /**

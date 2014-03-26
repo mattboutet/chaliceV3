@@ -21,7 +21,7 @@ Login ::
 		<!-- Email -->
 		<p class="{{ $errors->first('email', 'error') }}">
 			<label for="email">Email</label>
-			<input type="text" name="email" id="email" value="{{ Input::old('email') }}" required>
+			<input type="email" name="email" id="email" value="{{ Input::old('email') }}" required>
 			{{ $errors->first('email', '<span class="help-block">:message</span>') }}
 		</p>
 
