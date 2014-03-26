@@ -27,8 +27,8 @@ $(function() {
 				success: function($message) {
 					console.log("drank!");
 					list_label.hide();
-					saved_label.show(100).fadeOut(1000, function() {
-						list_label.fadeIn();
+					saved_label.fadeIn(100).fadeOut(1000, function() {
+						list_label.fadeIn(150);
 					});
 				}
 			});
@@ -41,8 +41,8 @@ $(function() {
 				success: function($message) {
 					console.log("undrank!");
 					list_label.hide();
-					saved_label.show(100).fadeOut(1000, function() {
-						list_label.fadeIn();
+					saved_label.fadeIn(100).fadeOut(1000, function() {
+						list_label.fadeIn(150);
 					});
 				}
 			});
