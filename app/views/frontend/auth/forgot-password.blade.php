@@ -14,7 +14,7 @@ Forgot your password? ::
 </header>
 
 <div class="main-content squish">
-	<form method="post" action="" class="form-profile form-forgot">
+	<form method="post" action="" class="form-profile form-reset">
 		<!-- CSRF Token -->
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 

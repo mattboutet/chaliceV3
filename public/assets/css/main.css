@@ -1822,7 +1822,7 @@ textarea {
 
 .form-join,
 .form-login,
-.form-forgot {
+.form-reset {
     margin: 0 auto;
     max-width: 480px;
     padding-top: 1rem;
@@ -1833,7 +1833,7 @@ textarea {
 
 .form-join .button,
 .form-login .button,
-.form-forgot .button {
+.form-reset .button {
     padding: 10px 14px;
     width: 100%;
 }
@@ -1852,6 +1852,13 @@ textarea {
     margin-bottom: 4px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    font-size: 0.875rem;
+}
+
+.form-forgot {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     font-size: 0.875rem;
 }
 
