@@ -41,6 +41,7 @@
 			@endif
 				<h3 class="beer-title"><a href="{{{ $tap->tap_link }}}" title="{{{ $tap->tap_name }}}" target="_blank">{{{ $tap->tap_name }}}</a></h3>
 
+				@if (Sentry::check())
 				<div class="beer-action">
 					@if(array_key_exists($tap->beer_id, $matches))
 						<span class="label label-success" style="display: none">Saved!</span>
@@ -53,6 +54,8 @@
 					@else
 					@endif
 				</div>
+				@else
+				@endif
 			</li>
 		@endforeach
 		
