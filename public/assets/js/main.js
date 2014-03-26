@@ -1,13 +1,58 @@
 // When the DOM is ready,
 $(function() {
 	
+	/**
+	 * AJAX beer toggle
+	 */
+
+	$('.beer-icon').on('click', function(e) {
+		e.preventDefault();
+		//console.log('boo');
+		var beer_id   = $(this).closest('.beer-action').attr('id'),
+			beer_item = $(this).closest('.beer-item'),
+			$checkbox = $(this).find(':checkbox');
+
+		beer_item.toggleClass('drunk');
+
+		if (beer_item.hasClass('drunk')) {
+			console.log(beer_id);
+			$checkbox.attr('checked', 'checked');
+
+			var ajax = $.ajax({
+				url: "/Drink/" + beer_id,
+				type: 'GET',
+				success: function($message) {
+					console.log("boop");
+					alert($message);
+				}
+			});
+		} else {
+			$checkbox.removeAttr('checked');
+			
+			var ajax = $.ajax({
+				url: "/unDrink/" + beer_id,
+				type: 'GET',
+				success: function($message) {
+					alert($message);
+				}
+			});
+		}
+	});
+
+	/**
+	 * Notifications
+	 */
+
 	$('.alert .close').on('click', function(e) {
 		e.preventDefault();
 		$(this).parent('.alert').hide();
 	});
 	
 	
-	// beer search innards
+	/**
+	 *  Beer search
+	 */
+
 	var searchForBeer = function() {
 		
 		var searchName = $('.search-beers').val();
@@ -15,11 +60,12 @@ $(function() {
 		// these elements match the search terms
 		var matches = $('.beer-item').filter(function() {
 			
-		    var thisBeerName = $(this).find('a').html().toLowerCase();
-		    searchName = searchName.toLowerCase().trim();
-		    
-		    // just do a substring match
-		    return (thisBeerName.indexOf(searchName) !== -1);
+			var thisBeerName = $(this).find('a').html().toLowerCase();
+			searchName = searchName.toLowerCase().trim();
+			
+			// just do a substring match
+			return (thisBeerName.indexOf(searchName) !== -1);
+			
 		});
 		
 		// these elements don't match the search terms
@@ -45,36 +91,5 @@ $(function() {
 	// hop to the beer search input right away!
 	$('.search-beers').first().focus();
 	
-});
-
-$('.beer-action').on('click', function(e){
-	e.preventDefault();
-	//alert('boo');
-	var beerID = this.id;
-	
-	var $checkbox = $(this).find(':checkbox');
-
-	$(this).toggleClass('drunk');
-	if ($(this).hasClass('drunk')) {
-			
-		$checkbox.attr('checked', 'checked');
-		//alert($beerID);
-		var ajax = $.ajax({
-			url: "/Drink/" + beerID,
-			type: 'GET',
-			success: function ($message){
-					alert($message);
-			}
-		})
-	} else {
-		$checkbox.removeAttr('checked');
-		var ajax = $.ajax({
-			url: "/unDrink/" + beerID,
-			type: 'GET',
-			success: function ($message){
-					alert($message);
-			}
-		})
-	}
 });
 

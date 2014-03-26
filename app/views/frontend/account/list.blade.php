@@ -8,6 +8,7 @@ Your list ::
 
 {{-- Account page content --}}
 @section('account-content')
+
 <header class="site-teaser">
 	<div class="wrapper">
 		<h2 class="fit-text">Track & complete your <a href="http://novareresbiercafe.com/" target="_blank">Novare Res</a><br>chalice list from anywhere!</h2>
@@ -20,7 +21,12 @@ Your list ::
 		<a href="{{ route('home') }}" class="button{{ (Request::is('/') ? ' active' : '') }}">On tap</a>
 		<a href="{{ route('list') }}" class="button{{ (Request::is('account/list') ? ' active' : '') }}">Your list</a>
 	</nav>
-	<input class="search-beers" type="text" placeholder="Find Beer">
+
+	<nav class="beer-search" role="navigation">
+		<i class="icon-search"></i>
+		<input class="search-beers" type="text" placeholder="Find a beer">
+	</nav>
+
 	<form method="post" action="" autocomplete="off">
 		<!-- CSRF Token -->
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -43,7 +49,6 @@ Your list ::
 						</div>
 					</li>
 				@endforeach
-				
 				<li class="beer-item-empty">
 					<h3 class="beer-title">We couldn't find any beers!</h3>
 				</li>
