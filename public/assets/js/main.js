@@ -7,10 +7,13 @@ $(function() {
 
 	$('.beer-icon').on('click', function(e) {
 		e.preventDefault();
-		//console.log('boo');
-		var beer_id   = $(this).closest('.beer-item').attr('id'),
-			beer_item = $(this).closest('.beer-item'),
-			$checkbox = $(this).find(':checkbox');
+
+		var $checkbox    = $(this).find(':checkbox'),
+			beer_id      = $(this).closest('.beer-item').attr('id'),
+			beer_item    = $(this).closest('.beer-item'),
+			beer_action  = beer_item.find('.beer-action'),
+			list_label   = beer_action.find('.label-info'),
+			saved_label  = beer_action.find('.label-success');
 
 		beer_item.toggleClass('drunk');
 
@@ -22,8 +25,11 @@ $(function() {
 				url: "/Drink/" + beer_id,
 				type: 'GET',
 				success: function($message) {
-					console.log("boop");
-					alert($message);
+					console.log("drank!");
+					list_label.hide();
+					saved_label.show().fadeOut(1000, function() {
+						list_label.fadeIn();
+					});
 				}
 			});
 		} else {
@@ -33,7 +39,11 @@ $(function() {
 				url: "/unDrink/" + beer_id,
 				type: 'GET',
 				success: function($message) {
-					alert($message);
+					console.log("undrank!");
+					list_label.hide();
+					saved_label.show().fadeOut(1000, function() {
+						list_label.fadeIn();
+					});
 				}
 			});
 		}

@@ -43,7 +43,8 @@
 
 				<div class="beer-action">
 					@if(array_key_exists($tap->beer_id, $matches))
-						<span class="on-list">On list</span>
+						<span class="label label-success" style="display: none">Saved!</span>
+						<span class="label label-info">On list</span>
 						@if($matches[$tap->beer_id])
 							{{link_to_action('Controllers\Account\ProfileController@unDrinkBeer', '', array($tap->beer_id), array('class' => 'beer-icon', 'title' => 'Undrink this!', 'beer_id' => $tap->beer_id)) }}
 						@else

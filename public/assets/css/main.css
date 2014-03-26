@@ -1277,6 +1277,44 @@ textarea {
 
 
 
+/* ================================================================== *\
+   Labels ($labels)
+\* ================================================================== */
+
+.label {
+    margin-right: 0.5rem;
+    padding: 3px 6px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius:    2px;
+    border-radius:         2px;
+    background-color: #dedede;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 0.6875rem;
+    line-height: 44px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.label.label-info {
+    background-color: #77779c;
+}
+
+.label.label-success {
+    background-color: #0a7559;
+}
+
+@media screen and (min-width: 600px) {
+    .label {
+        font-size: 0.875rem;
+    }
+}
+
+
+
+
 
 /* ================================================================== *\
    Buttons ($buttons)
@@ -1617,6 +1655,8 @@ textarea {
 
 .beer-search input {
     padding: 1rem 1rem 1rem 48px;
+    font-family: "eskapade-fraktur", Georgia, serif;
+    font-size: 1.333rem;
 }
 
 .beer {
@@ -1673,23 +1713,6 @@ textarea {
     text-align: right;
 }
 
-.beer-action .on-list {
-    font-size: 0.6875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    line-height: 44px;
-    letter-spacing: 1px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin-right: 0.5rem;
-    background-color: #ca4631;
-    padding: 3px 5px;
-    color: #fff;
-    -webkit-border-radius: 2px;
-    -moz-border-radius:    2px;
-    border-radius:         2px;
-}
-
 .beer-icon,
 .beer-action input[type="checkbox"] {
     position: relative;
@@ -1737,27 +1760,17 @@ textarea {
         padding: 14px 18px;
     }
 
+    .beer-search input {
+        font-size: 1.777rem;
+    }
+
     .beer-item, .beer-item-empty {
         padding: 1rem;
     }
 
     .beer-action .on-list {
-        font-size: 0.875rem;
         margin-right: 0.75rem;
-        /*line-height: 48px;*/
     }
-
-    /*.beer-icon,
-    .beer-action input[type="checkbox"] {
-        width: 48px;
-        height: 48px;
-    }
-
-    .drunk .beer-icon:before,
-    .drunk .beer-action input[type="checkbox"]:checked:before {
-        font-size: 32px;
-        line-height: 44px;
-    }*/
 }
 
 @media screen and (min-width: 960px) {
