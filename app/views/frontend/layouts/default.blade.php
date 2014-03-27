@@ -96,14 +96,7 @@
 		<script src="{{ asset('assets/js/main.js') }}"></script>
 
 		<!-- Google Analytics (async) -->
-		<script>
-		(function(c,a,r,d,n,l){c.GoogleAnalyticsObject=d;c[d]||(c[d]=
-		function(){(c[d].q=c[d].q||[]).push(arguments)});c[d].d=+new Date;
-		n=a.createElement(r);l=a.getElementsByTagName(r)[0];
-		n.src='//www.google-analytics.com/analytics.js';
-		l.parentNode.insertBefore(n,l)}(window,document,'script','ga'));
-		ga('create','UA-XXXXXXXX-XX');ga('send','pageview');
-		</script>
+		<script>(function(c,a,r,d,n,l){c.GoogleAnalyticsObject=d;c[d]||(c[d]=function(){(c[d].q=c[d].q||[]).push(arguments)});c[d].d=+new Date;n=a.createElement(r);l=a.getElementsByTagName(r)[0];n.src='//www.google-analytics.com/analytics.js';l.parentNode.insertBefore(n,l)}(window,document,'script','ga'));ga('create','UA-49461338-1');ga('send','pageview');</script>
 
 		{{--<!-- Container -->
 		<div class="container">

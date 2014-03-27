@@ -423,11 +423,13 @@ ul ol {
     float: left;
     margin: 0;
     margin-right: 0.317rem;
-    color: #222;
+    color: #fff;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 700;
     font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* 1. Address inconsistent and variable `font-size` in all browsers */
