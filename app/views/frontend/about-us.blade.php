@@ -24,7 +24,7 @@ About Chalice ::
 
 	<ol>
 		<li>Buy a beer</li>
-		<li>Visit <a href="http://chaliceapp.com">http://chaliceapp.com</a> on your smart phone</li>
+		<li>Visit <a href="http://www.chaliceapp.com">http://www.chaliceapp.com</a> on your smart phone</li>
 		<li>Check off the beer</li>
 		<li>Drink the beer</li>
 		<li>See step 1</li>
