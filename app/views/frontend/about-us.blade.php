@@ -32,7 +32,7 @@ About Chalice ::
 
 	<p><span class="run-in">Protip:</span> You can add a Chalice App icon to the home screen on your mobile device for quicker access to this web app.</p>
 
-	<p><a href="http://www.pcadvisor.co.uk/how-to/google-android/3447950/add-bookmarks-home-screen-in-android/">Android directions</a> &bull; <a href="http://www.tech-recipes.com/rx/44908/ios-add-website-shortcut-to-home-screen/">iOS directions</a></p>
+	<p><a href="http://www.pcadvisor.co.uk/how-to/google-android/3447950/add-bookmarks-home-screen-in-android/">Android tutorial</a> &bull; <a href="http://www.tech-recipes.com/rx/44908/ios-add-website-shortcut-to-home-screen/">iOS tutorial</a></p>
 
 	<h3 class="h2">Questions?</h3>
 
