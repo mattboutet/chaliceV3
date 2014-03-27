@@ -32,7 +32,7 @@ class ContactUsController extends BaseController {
 		// If validation fails, we'll exit the operation now.
 		if ($validator->fails())
 		{
-			return Redirect::route('home')->withErrors($validator);
+			return Redirect::back()->withErrors($validator);
 		}
 
 		$fromEmail = Input::get('email');
