@@ -13,7 +13,7 @@
 		<meta name="description" content="Track & complete your chalice list from anywhere! This web app was built by Big Room Studios for Novare Res Bier Café in Portland, Maine.">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="ClearType" content="true">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
 		<meta name="author" content="Matt Boutet">
 
 		<!-- Open Graph tags -->
