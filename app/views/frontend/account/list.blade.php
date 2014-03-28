@@ -33,7 +33,15 @@ Your list ::
 
 		@if ($chaliceList->count())
 			<ul class="beer">
+				@if($style = '')@endif {{--super-duper hacky, but blade doesn't allow variable assignment?--}}
+				
 				@foreach ($chaliceList as $beer)
+					@if($style != $beer->beer_style)
+						<li class = "beer-item">
+							<h3 class="beer-style">{{$beer->beer_style}}</h3>
+							@if($style = $beer->beer_style) @endif
+						</li>
+					@endif
 					@if ($beer->pivot->checked)
 					<li class="beer-item drunk" id="{{{$beer->id}}}">
 					@else
@@ -49,6 +57,7 @@ Your list ::
 							@endif
 						</div>
 					</li>
+			
 				@endforeach
 				<li class="beer-item-empty">
 					<h3 class="beer-title">We couldn't find any beers!</h3>
