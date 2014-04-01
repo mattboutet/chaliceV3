@@ -33,19 +33,19 @@ Your list ::
 
 		@if ($chaliceList->count())
 			<ul class="beer">
-				@if($style = '')@endif {{--super-duper hacky, but blade doesn't allow variable assignment?--}}
+				@if($style = '' && $not_empty = TRUE)@endif {{--super-duper hacky, but blade doesn't allow variable assignment?--}}
 				
 				@foreach ($chaliceList as $beer)
-					@if($style != $beer->beer_style)
+					@if($style != $beer->beer_style && !$beer->pivot->checked)
 						<li class = "beer-item">
 							<h3 class="beer-style">{{$beer->beer_style}}</h3>
 							@if($style = $beer->beer_style) @endif
 						</li>
 					@endif
 					@if ($beer->pivot->checked)
-					<li class="beer-item drunk" id="{{{$beer->id}}}">
+					<li class="beer-item drunk {{$beer->beer_style}}" id="{{{$beer->id}}}">
 					@else
-					<li class="beer-item" id="{{{$beer->id}}}">
+					<li class="beer-item {{$beer->beer_style}}" id="{{{$beer->id}}}">
 					@endif
 						<h3 class="beer-title"><a href="http://www.google.com/search?q=site:beeradvocate.com+{{{$beer->beer_name}}}" title="{{{ $beer->beer_name }}}" target="_blank">{{{ $beer->beer_name }}}</h3></a>
 						<div class="beer-action" id="{{{$beer->id}}}">

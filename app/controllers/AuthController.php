@@ -134,7 +134,6 @@ class AuthController extends BaseController {
 			));
 			$user_id = $user->id;
 			
-			//MWB FIXME -- populate the pivot table
 			if (Input::has('bare')) {
 				$bare_list_id = Input::get('bare');
 			} else {//If they didn't pick (which they can't until I add to template) just populate pivot with defaults

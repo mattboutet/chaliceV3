@@ -60,7 +60,9 @@ $(function() {
 	
 	
 	/**
-	 *  Beer search
+	 *  Beer search.  Strip out style names if user is trying to search.
+	 * Not ideal.  Better if it'd keep style names if a beer in the style matches.
+	 * not sure how to accomplish this?  me-no-speekey-jquery.
 	 */
 
 	var searchForBeer = function() {
@@ -70,7 +72,14 @@ $(function() {
 		// these elements match the search terms
 		var matches = $('.beer-item').filter(function() {
 			
-			var thisBeerName = $(this).find('a').html().toLowerCase();
+			var upperBeerName = $(this).find('a').html();
+			
+			if (typeof upperBeerName != "undefined") {
+				var thisBeerName = upperBeerName.toLowerCase();
+			} else {
+				upperBeerName = $(this).find('h3').text();
+				var thisBeerName = upperBeerName.toLowerCase();
+			}
 			searchName = searchName.toLowerCase().trim();
 			
 			// just do a substring match
