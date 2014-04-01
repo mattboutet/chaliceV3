@@ -37,8 +37,8 @@ Your list ::
 				
 				@foreach ($chaliceList as $beer)
 					@if($style != $beer->beer_style && !$beer->pivot->checked)
-						<li class = "beer-item">
-							<h3 class="beer-style">{{$beer->beer_style}}</h3>
+						<li class="beer-item beer-style">
+							<h2 class="beer-title h3">{{$beer->beer_style}}</h2>
 							@if($style = $beer->beer_style) @endif
 						</li>
 					@endif

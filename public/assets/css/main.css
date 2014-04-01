@@ -1634,7 +1634,7 @@ textarea {
 }
 
 .beer-lists a.active {
-    background-color: #41415b;
+    background-color: #585875;
     -webkit-box-shadow: none;
     -moz-box-shadow:    none;
     box-shadow:         none;
@@ -1643,7 +1643,8 @@ textarea {
 
 .beer-search {
     position: relative;
-    border: 2px solid #41415b;
+    border-left: 2px solid #41415b;
+    border-right: 2px solid #41415b;
 }
 
 .beer-search i {
@@ -1698,6 +1699,15 @@ textarea {
 .beer-title {
     padding-right: 0.75rem;
     color: #f3bc4a;
+    margin: 0;
+}
+
+.beer-style {
+    background-color: #585875;
+}
+
+.beer-style .beer-title {
+    color: #fff;
 }
 
 .beer-title a {
