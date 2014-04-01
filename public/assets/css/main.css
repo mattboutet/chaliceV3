@@ -338,8 +338,7 @@ h2, .h2,
 h3, .h3,
 h4, .h4,
 h5, .h5,
-h6, .h6,
-.search-beers {
+h6, .h6 {
     margin: 0 0 0.75rem;
     color: #fff;
     font-weight: 400;
@@ -349,7 +348,7 @@ h6, .h6,
 }
 
 h1, .h1 { font-size: 2.369rem; }
-h2, .h2, .search-beers { font-size: 1.777rem; }
+h2, .h2 { font-size: 1.777rem; }
 h3, .h3 { font-size: 1.333rem; }
 
 h4, .h4,
@@ -424,11 +423,13 @@ ul ol {
     float: left;
     margin: 0;
     margin-right: 0.317rem;
-    color: #222;
+    color: #fff;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 700;
     font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* 1. Address inconsistent and variable `font-size` in all browsers */
@@ -1278,6 +1279,44 @@ textarea {
 
 
 
+/* ================================================================== *\
+   Labels ($labels)
+\* ================================================================== */
+
+.label {
+    margin-right: 0.5rem;
+    padding: 3px 6px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius:    2px;
+    border-radius:         2px;
+    background-color: #dedede;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 0.6875rem;
+    line-height: 44px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.label.label-info {
+    background-color: #77779c;
+}
+
+.label.label-success {
+    background-color: #0a7559;
+}
+
+@media screen and (min-width: 600px) {
+    .label {
+        font-size: 0.875rem;
+    }
+}
+
+
+
+
 
 /* ================================================================== *\
    Buttons ($buttons)
@@ -1416,8 +1455,8 @@ textarea {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-chalice:before   { content: "\e600"; }
-.icon-checkmark:before { content: "\e601"; }
+.icon-search:before  { content: "\e601"; }
+.icon-chalice:before { content: "\e600"; }
 
 
 
@@ -1590,16 +1629,37 @@ textarea {
 }
 
 .beer-lists a:hover {
-    background-color: #333347;
+    background-color: #252533;
     color: #fff;
 }
 
 .beer-lists a.active {
-    background-color: #41415b;
+    background-color: #585875;
     -webkit-box-shadow: none;
     -moz-box-shadow:    none;
     box-shadow:         none;
     color: #fff;
+}
+
+.beer-search {
+    position: relative;
+    border-left: 2px solid #41415b;
+    border-right: 2px solid #41415b;
+}
+
+.beer-search i {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    font-size: 24px;
+    margin-top: -12px;
+    color: #777;
+}
+
+.beer-search input {
+    padding: 1rem 1rem 1rem 48px;
+    font-family: "eskapade-fraktur", Georgia, serif;
+    font-size: 1.333rem;
 }
 
 .beer {
@@ -1608,14 +1668,9 @@ textarea {
     list-style: none;
 }
 
-input.search-beers {
-    border: 2px solid #41415B;
-    height: auto;
-    margin: 0;
-}
-
 .beer-item, .beer-item-empty {
     display: table;
+    position: relative;
     padding: 0.75rem 1rem;
     width: 100%;
     border-bottom: 2px solid #41415b;
@@ -1624,15 +1679,11 @@ input.search-beers {
 
 .beer-item-empty {
     display: none;
-    background-color: #41415B;
+    background-color: #41415b;
 }
 
 .beer-item-empty .beer-title {
     color: #DDD;
-}
-
-form .beer-item {
-    cursor: pointer;
 }
 
 .beer-item.drunk {
@@ -1648,6 +1699,15 @@ form .beer-item {
 .beer-title {
     padding-right: 0.75rem;
     color: #f3bc4a;
+    margin: 0;
+}
+
+.beer-style {
+    background-color: #585875;
+}
+
+.beer-style .beer-title {
+    color: #fff;
 }
 
 .beer-title a {
@@ -1660,17 +1720,22 @@ form .beer-item {
     text-decoration: line-through;
 }
 
+.beer-action {
+    min-width: 120px;
+    text-align: right;
+}
+
 .beer-icon,
 .beer-action input[type="checkbox"] {
     position: relative;
     float: right;
-    width: 32px;
-    height: 32px;
-    border: 2px solid #41415b;
+    width: 44px;
+    height: 44px;
+    border: 2px solid #77779c;
     -webkit-border-radius: 8px;
     -moz-border-radius:    8px;
     border-radius:         8px;
-    background-color: #2c2c3d;
+    background-color: #1e1e29;
     -webkit-appearance: none;
     appearance: none;
     outline: none;
@@ -1690,41 +1755,33 @@ form .beer-item {
 .drunk .beer-action input[type="checkbox"]:checked:before {
     position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
     color: #f3bc4a;
     content: "\e600";
     text-align: center;
-    font-size: 16px;
+    font-size: 24px;
     font-family: "ca_icons";
-    line-height: 28px;
+    line-height: 40px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 @media screen and (min-width: 600px) {
-    
-    input.search-beers {
-        height: 5rem;
-    }
-    
     .beer-lists a {
         padding: 14px 18px;
+    }
+
+    .beer-search input {
+        font-size: 1.777rem;
     }
 
     .beer-item, .beer-item-empty {
         padding: 1rem;
     }
 
-    .beer-icon,
-    .beer-action input[type="checkbox"] {
-        width: 48px;
-        height: 48px;
-    }
-
-    .drunk .beer-icon:before,
-    .drunk .beer-action input[type="checkbox"]:checked:before {
-        font-size: 32px;
-        line-height: 44px;
+    .beer-action .label {
+        margin-right: 0.75rem;
     }
 }
 
@@ -1776,22 +1833,27 @@ form .beer-item {
 }
 
 .form-join,
-.form-login {
+.form-login,
+.form-reset {
     margin: 0 auto;
     max-width: 480px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-top: 2px solid #41415b;
+    border-bottom: 2px solid #41415b;
+}
+
+.form-join .button,
+.form-login .button,
+.form-reset .button {
+    padding: 10px 14px;
+    width: 100%;
 }
 
 .form-required {
     display: block;
     margin-top: 1rem;
     width: 100%;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.75rem;
-}
-
-.form-forgot {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -1805,18 +1867,11 @@ form .beer-item {
     font-size: 0.875rem;
 }
 
-.form-join,
-.form-login {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    border-top: 2px solid #41415b;
-    border-bottom: 2px solid #41415b;
-}
-
-.form-join .button,
-.form-login .button {
-    padding: 10px 14px;
-    width: 100%;
+.form-forgot {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.875rem;
 }
 
 /**

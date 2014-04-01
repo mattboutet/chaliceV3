@@ -1,5 +1,9 @@
 <?php
 
+/****************
+ * This is no longer used.  Keep around in case code needs to be cannibalized, then delete.
+ * 
+ */
 class ChaliceController extends BaseController {
 
 	public function index()

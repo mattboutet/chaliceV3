@@ -4,17 +4,21 @@
 <!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 	<head>
 		<!-- Title, meta -->
+		<meta charset="utf-8">
 		<title>
 			@section('title')
 				Chalice App
 			@show
 		</title>
 		<meta name="description" content="Track & complete your chalice list from anywhere! This web app was built by Big Room Studios for Novare Res Bier Café in Portland, Maine.">
-		<meta name="author" content="Matt Boutet">
-		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="ClearType" content="true">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="author" content="Matt Boutet">
+
+		<!-- Open Graph tags -->
+		<meta property="og:title" content="Chalice App">
+		<meta property="og:image" content="{{ asset('assets/ico/apple-touch-icon-152x152-precomposed.png') }}">
 
 		<!-- DNS prefetch -->
 		<link rel="dns-prefetch" href="//ajax.googleapis.com">
@@ -96,14 +100,7 @@
 		<script src="{{ asset('assets/js/main.js') }}"></script>
 
 		<!-- Google Analytics (async) -->
-		<script>
-		(function(c,a,r,d,n,l){c.GoogleAnalyticsObject=d;c[d]||(c[d]=
-		function(){(c[d].q=c[d].q||[]).push(arguments)});c[d].d=+new Date;
-		n=a.createElement(r);l=a.getElementsByTagName(r)[0];
-		n.src='//www.google-analytics.com/analytics.js';
-		l.parentNode.insertBefore(n,l)}(window,document,'script','ga'));
-		ga('create','UA-XXXXXXXX-XX');ga('send','pageview');
-		</script>
+		<script>(function(c,a,r,d,n,l){c.GoogleAnalyticsObject=d;c[d]||(c[d]=function(){(c[d].q=c[d].q||[]).push(arguments)});c[d].d=+new Date;n=a.createElement(r);l=a.getElementsByTagName(r)[0];n.src='//www.google-analytics.com/analytics.js';l.parentNode.insertBefore(n,l)}(window,document,'script','ga'));ga('create','UA-49461338-1');ga('send','pageview');</script>
 
 		{{--<!-- Container -->
 		<div class="container">

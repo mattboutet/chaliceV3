@@ -10,7 +10,6 @@ About Chalice ::
 @section('content')
 
 <header class="main-header text-center">
-	<!-- <figure class="header-image"><img src="{{ asset('assets/img/logo-white.svg') }}" alt="Chalice"></figure> -->
 	<h2 class="main-title">What is Chalice?</h2>
 </header>
 
@@ -25,11 +24,15 @@ About Chalice ::
 
 	<ol>
 		<li>Buy a beer</li>
-		<li>Pull out your phone</li>
+		<li>Visit <a href="http://www.chaliceapp.com">http://www.chaliceapp.com</a> on your smart phone</li>
 		<li>Check off the beer</li>
 		<li>Drink the beer</li>
 		<li>See step 1</li>
 	</ol>
+
+	<p><span class="run-in">Protip:</span> You can add a Chalice App icon to the home screen on your mobile device for quicker access to this web app.</p>
+
+	<p><a href="http://www.pcadvisor.co.uk/how-to/google-android/3447950/add-bookmarks-home-screen-in-android/">Android tutorial</a> &bull; <a href="http://www.tech-recipes.com/rx/44908/ios-add-website-shortcut-to-home-screen/">iOS tutorial</a></p>
 
 	<h3 class="h2">Questions?</h3>
 

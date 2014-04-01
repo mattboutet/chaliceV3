@@ -8,6 +8,7 @@ Your list ::
 
 {{-- Account page content --}}
 @section('account-content')
+
 <header class="site-teaser">
 	<div class="wrapper">
 		<h2 class="fit-text">Track & complete your <a href="http://novareresbiercafe.com/" target="_blank">Novare Res</a><br>chalice list from anywhere!</h2>
@@ -20,21 +21,35 @@ Your list ::
 		<a href="{{ route('home') }}" class="button{{ (Request::is('/') ? ' active' : '') }}">On tap</a>
 		<a href="{{ route('list') }}" class="button{{ (Request::is('account/list') ? ' active' : '') }}">Your list</a>
 	</nav>
-	<input class="search-beers" type="text" placeholder="Find Beer">
+
+	<nav class="beer-search" role="navigation">
+		<i class="icon-search"></i>
+		<input class="search-beers" type="text" placeholder="Find a beer">
+	</nav>
+
 	<form method="post" action="" autocomplete="off">
 		<!-- CSRF Token -->
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 		@if ($chaliceList->count())
 			<ul class="beer">
+				@if($style = '' && $not_empty = TRUE)@endif {{--super-duper hacky, but blade doesn't allow variable assignment?--}}
+				
 				@foreach ($chaliceList as $beer)
-					@if ($beer->pivot->checked)
-					<li class="beer-item drunk" id="{{{$beer->id}}}">
-					@else
-					<li class="beer-item" id="{{{$beer->id}}}">
+					@if($style != $beer->beer_style && !$beer->pivot->checked)
+						<li class="beer-item beer-style">
+							<h2 class="beer-title h3">{{$beer->beer_style}}</h2>
+							@if($style = $beer->beer_style) @endif
+						</li>
 					@endif
-						<h3 class="beer-title"><a href="http://www.google.com/search?q=site:beeradvocate.com+{{{$beer->beer_name}}}" title="{{{ $beer->beer_name }}}" target="_blank">{{{ $beer->beer_name }}}</h3>
+					@if ($beer->pivot->checked)
+					<li class="beer-item drunk {{$beer->beer_style}}" id="{{{$beer->id}}}">
+					@else
+					<li class="beer-item {{$beer->beer_style}}" id="{{{$beer->id}}}">
+					@endif
+						<h3 class="beer-title"><a href="http://www.google.com/search?q=site:beeradvocate.com+{{{$beer->beer_name}}}" title="{{{ $beer->beer_name }}}" target="_blank">{{{ $beer->beer_name }}}</h3></a>
 						<div class="beer-action" id="{{{$beer->id}}}">
+							<span class="label label-success" style="display: none">Saved!</span>
 							@if ($beer->pivot->checked)
 								{{link_to_action('Controllers\Account\ProfileController@unDrinkBeer', '', array($beer->id), array('class' => 'beer-icon', 'title' => 'Undrink this!', 'beer_id' => $beer->id)) }}
 							@else
@@ -42,8 +57,8 @@ Your list ::
 							@endif
 						</div>
 					</li>
+			
 				@endforeach
-				
 				<li class="beer-item-empty">
 					<h3 class="beer-title">We couldn't find any beers!</h3>
 				</li>

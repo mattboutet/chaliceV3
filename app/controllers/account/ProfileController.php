@@ -141,7 +141,7 @@ class ProfileController extends AuthorizedController {
 		// Get the user information
 		$user = Sentry::getUser();
 			
-		$chaliceList = $user->beers()->get();
+		$chaliceList = $user->beers()->orderby('checked', 'asc')->orderby('beer_style','desc')->get();
 
 		// Show the page
 		return View::make('frontend/account/list', compact('user', 'chaliceList'));
@@ -166,7 +166,8 @@ class ProfileController extends AuthorizedController {
 		 * around this, I go through the whole loop, check everything that's checked and uncheck the rest
 		 * inefficient, but works.  
 		 * 
-		 * TODO: This is slow as hell.  There has to be a better way.
+		 * TODO: This is slow as hell.  There has to be a better way.  It's now being done via ajax, so the slowness 
+		 * is not apparent.
 		 */
 		foreach ($chalice_list as $list_beer){
 				

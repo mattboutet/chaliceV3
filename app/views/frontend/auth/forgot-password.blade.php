@@ -14,19 +14,21 @@ Forgot your password? ::
 </header>
 
 <div class="main-content squish">
-	<form method="post" action="" class="form-profile form-forgot">
+	<form method="post" action="" class="form-profile form-reset">
 		<!-- CSRF Token -->
-		<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 		<!-- Email -->
 		<p class="{{ $errors->first('email', 'error') }}">
 			<label for="email">Email</label>
-			<input type="text" name="email" id="email" value="{{ Input::old('email') }}" required>
+			<input type="email" name="email" id="email" value="{{ Input::old('email') }}" required>
 			{{ $errors->first('email', '<span class="help-block">:message</span>') }}
 		</p>
 
 		<!-- Form actions -->
-		<button type="submit" class="button button-primary">Reset password</button>
+		<p><button type="submit" class="button button-primary">Reset password</button></p>
+
+		<div class="form-forgot">&larr; <a href="{{ route('signin') }}">Back to login</a></div>
 	</form>
 </div>
 @stop

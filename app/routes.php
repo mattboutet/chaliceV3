@@ -125,9 +125,11 @@ Route::get('about-us', function()
 {
 	return View::make('frontend/about-us');
 });
+Route::post('about-us', 'ContactUsController@postIndex');
 
-Route::get('contact-us', array('as' => 'contact-us', 'uses' => 'ContactUsController@getIndex'));
-Route::post('contact-us', 'ContactUsController@postIndex');
+
+//Route::get('contact-us', array('as' => 'contact-us', 'uses' => 'ContactUsController@getIndex'));
+//Route::post('contact-us', 'ContactUsController@postIndex');
 
 
 Route::get('/', array('as' => 'home', 'uses' => 'TapsController@index'));

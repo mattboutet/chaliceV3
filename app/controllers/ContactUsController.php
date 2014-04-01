@@ -32,10 +32,27 @@ class ContactUsController extends BaseController {
 		// If validation fails, we'll exit the operation now.
 		if ($validator->fails())
 		{
-			return Redirect::route('contact-us')->withErrors($validator);
+			return Redirect::back()->withErrors($validator);
 		}
 
-		# TODO !
+		$fromEmail = Input::get('email');
+	    $fromName = Input::get('name');
+	    $subject = 'Chalice Contact-Us submission';
+	    $data = array('content' => Input::get('description'));
+	
+	    $toEmail = 'matt@bigroomstudios.com';
+	    $toName = 'Matt Boutet';
+		
+	    Mail::send('emails.contact', $data, function($message) use ($toEmail, $toName, $fromEmail, $fromName, $subject)
+	    {
+	        $message->to($toEmail, $toName);
+	
+	        $message->from($fromEmail, $fromName);	
+	
+	        $message->subject($subject);
+	    });
+		return Redirect::route('home')->with('success', "Thanks for your input.");
+		
 	}
 
 }

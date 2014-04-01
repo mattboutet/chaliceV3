@@ -36,7 +36,7 @@ Your Profile ::
 
 			<p class="{{ $errors->first('website', 'error') }}">
 				<label for="website">Website URL</label>
-				<input type="text" name="website" id="website" value="{{ Input::old('website', $user->website) }}">
+				<input type="url" name="website" id="website" value="{{ Input::old('website', $user->website) }}">
 				{{ $errors->first('website', '<span class="help-block">:message</span>') }}
 			</p>
 
@@ -56,18 +56,18 @@ Your Profile ::
 
 					<p class="{{ $errors->first('email', 'error') }}">
 						<label for="email">New Email</label>
-						<input type="text" name="email" id="email" value="">
+						<input type="email" name="email" id="email" value="">
 						{{ $errors->first('email', '<span class="help-block">:message</span>') }}
 					</p>
 
 					<p class="{{ $errors->first('email_confirm', 'error') }}">
 						<label for="email_confirm">Confirm New Email</label>
-						<input type="text" name="email_confirm" id="email_confirm" value="">
+						<input type="email" name="email_confirm" id="email_confirm" value="">
 						{{ $errors->first('email_confirm', '<span class="help-block">:message</span>') }}
 					</p>
 
 					<p class="{{ $errors->first('current_password', 'error') }}">
-						<label for="current_password">Current Password (<a href="{{ route('forgot-password') }}"></a>)</label>
+						<label for="current_password">Current Password</label>
 						<input type="password" name="current_password" id="current_password" value="">
 						{{ $errors->first('current_password', '<span class="help-block">:message</span>') }}
 					</p>
@@ -81,7 +81,7 @@ Your Profile ::
 					<legend>Change password</legend>
 
 					<p class="{{ $errors->first('old_password', 'error') }}">
-						<label for="old_password">Old Password (<a href="{{ route('forgot-password') }}">Forgot?</a>)</label>
+						<label for="old_password">Current Password</label>
 						<input type="password" name="old_password" id="old_password" value="">
 						{{ $errors->first('old_password', '<span class="help-block">:message</span>') }}
 					</p>

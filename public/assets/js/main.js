@@ -1,13 +1,70 @@
 // When the DOM is ready,
 $(function() {
 	
+	/**
+	 * AJAX beer toggle
+	 */
+
+	$('.beer-icon').on('click', function(e) {
+		e.preventDefault();
+
+		var $checkbox    = $(this).find(':checkbox'),
+			beer_id      = $(this).closest('.beer-item').attr('id'),
+			beer_item    = $(this).closest('.beer-item'),
+			beer_action  = beer_item.find('.beer-action'),
+			list_label   = beer_action.find('.label-info'),
+			saved_label  = beer_action.find('.label-success');
+
+		beer_item.toggleClass('drunk');
+
+		if (beer_item.hasClass('drunk')) {
+			console.log(beer_id);
+			$checkbox.attr('checked', 'checked');
+
+			var ajax = $.ajax({
+				url: "/Drink/" + beer_id,
+				type: 'GET',
+				success: function($message) {
+					console.log("drank!");
+					list_label.hide();
+					saved_label.fadeIn(100).fadeOut(1000, function() {
+						list_label.fadeIn(150);
+					});
+				}
+			});
+		} else {
+			$checkbox.removeAttr('checked');
+			
+			var ajax = $.ajax({
+				url: "/unDrink/" + beer_id,
+				type: 'GET',
+				success: function($message) {
+					console.log("undrank!");
+					list_label.hide();
+					saved_label.fadeIn(100).fadeOut(1000, function() {
+						list_label.fadeIn(150);
+					});
+				}
+			});
+		}
+	});
+
+	/**
+	 * Notifications
+	 */
+
 	$('.alert .close').on('click', function(e) {
 		e.preventDefault();
 		$(this).parent('.alert').hide();
 	});
 	
 	
-	// beer search innards
+	/**
+	 *  Beer search.  Strip out style names if user is trying to search.
+	 * Not ideal.  Better if it'd keep style names if a beer in the style matches.
+	 * not sure how to accomplish this?  me-no-speekey-jquery.
+	 */
+
 	var searchForBeer = function() {
 		
 		var searchName = $('.search-beers').val();
@@ -15,11 +72,19 @@ $(function() {
 		// these elements match the search terms
 		var matches = $('.beer-item').filter(function() {
 			
-		    var thisBeerName = $(this).find('a').html().toLowerCase();
-		    searchName = searchName.toLowerCase().trim();
-		    
-		    // just do a substring match
-		    return (thisBeerName.indexOf(searchName) !== -1);
+			var upperBeerName = $(this).find('a').html();
+			
+			if (typeof upperBeerName != "undefined") {
+				var thisBeerName = upperBeerName.toLowerCase();
+			} else {
+				upperBeerName = $(this).find('h3').text();
+				var thisBeerName = upperBeerName.toLowerCase();
+			}
+			searchName = searchName.toLowerCase().trim();
+			
+			// just do a substring match
+			return (thisBeerName.indexOf(searchName) !== -1);
+
 		});
 		
 		// these elements don't match the search terms
@@ -45,36 +110,5 @@ $(function() {
 	// hop to the beer search input right away!
 	$('.search-beers').first().focus();
 	
-});
-
-$('.beer-action').on('click', function(e){
-	e.preventDefault();
-	//alert('boo');
-	var beerID = this.id;
-	
-	var $checkbox = $(this).find(':checkbox');
-
-	$(this).toggleClass('drunk');
-	if ($(this).hasClass('drunk')) {
-			
-		$checkbox.attr('checked', 'checked');
-		//alert($beerID);
-		var ajax = $.ajax({
-			url: "/Drink/" + beerID,
-			type: 'GET',
-			success: function ($message){
-					alert($message);
-			}
-		})
-	} else {
-		$checkbox.removeAttr('checked');
-		var ajax = $.ajax({
-			url: "/unDrink/" + beerID,
-			type: 'GET',
-			success: function ($message){
-					alert($message);
-			}
-		})
-	}
 });
 

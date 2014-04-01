@@ -41,14 +41,14 @@ Join ::
 		<!-- Email -->
 		<p class="{{ $errors->first('email', 'error') }}">
 			<label for="email">Email*</label>
-			<input type="text" name="email" id="email" value="{{ Input::old('email') }}" required>
+			<input type="email" name="email" id="email" value="{{ Input::old('email') }}" required>
 			{{ $errors->first('email', '<span class="help-block">:message</span>') }}
 		</p>
 
 		<!-- Email Confirm -->
 		<p class="{{ $errors->first('email_confirm', 'error') }}">
 			<label for="email_confirm">Confirm Email*</label>
-			<input type="text" name="email_confirm" id="email_confirm" value="{{ Input::old('email_confirm') }}" required>
+			<input type="email" name="email_confirm" id="email_confirm" value="{{ Input::old('email_confirm') }}" required>
 			{{ $errors->first('email_confirm', '<span class="help-block">:message</span>') }}
 		</p>
 
