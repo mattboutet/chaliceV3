@@ -8,12 +8,12 @@ $(function() {
 	$('.beer-icon').on('click', function(e) {
 		e.preventDefault();
 
-		var $checkbox    = $(this).find(':checkbox'),
-			beer_id      = $(this).closest('.beer-item').attr('id'),
-			beer_item    = $(this).closest('.beer-item'),
-			beer_action  = beer_item.find('.beer-action'),
-			list_label   = beer_action.find('.label-info'),
-			saved_label  = beer_action.find('.label-success');
+		var $checkbox   = $(this).find(':checkbox'),
+			beer_id     = $(this).closest('.beer-item').attr('id'),
+			beer_item   = $(this).closest('.beer-item'),
+			beer_cb     = beer_item.find('.beer-cb'),
+			list_label  = beer_cb.find('.label-info'),
+			saved_label = beer_cb.find('.label-success');
 
 		beer_item.toggleClass('drunk');
 
@@ -50,6 +50,19 @@ $(function() {
 	});
 
 	/**
+	 * Beer info accordions
+	 */
+
+	$('.beer-toggle').on('click', function(e) {
+		e.preventDefault();
+
+		var	beer_item = $(this).closest('.beer-item'),
+			beer_info = beer_item.find('.beer-info');
+
+		beer_info.slideToggle('fast');
+	});
+
+	/**
 	 * Notifications
 	 */
 
@@ -60,7 +73,7 @@ $(function() {
 	
 	
 	/**
-	 *  Beer search.  Strip out style names if user is trying to search.
+	 *  Beer search. Strip out style names if user is trying to search.
 	 * Not ideal.  Better if it'd keep style names if a beer in the style matches.
 	 * not sure how to accomplish this?  me-no-speekey-jquery.
 	 */
@@ -94,7 +107,7 @@ $(function() {
 		matches.show();
 		nonMatches.hide();
 		
-		var emptyItem = $('.beer-item-empty');
+		var emptyItem = $('.beer-none');
 		
 		if (matches.length == 0) {
 			emptyItem.show();

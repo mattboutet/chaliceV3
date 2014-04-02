@@ -10,12 +10,6 @@
 	</div>
 </header>
 
-{{--@if ($message = Session::get('marked'))
-	<pre>You successfully checked {{$message}} off your Chalice list</pre>
-@elseif ($message = Session::get('unmarked'))
-	<pre>You successfully returned {{$message}} to you to-drink list</pre>
-@endif --}}
-
 @if ($taps->count())
 <div class="main-content">
 	<nav class="beer-lists" role="navigation">
@@ -32,37 +26,46 @@
 		@foreach ($taps as $tap)
 			@if(array_key_exists($tap->beer_id, $matches))
 				@if($matches[$tap->beer_id])
-					<li class="beer-item drunk" id="{{{$tap->beer_id}}}">
+					<li id="beer-{{{ $tap->beer_id }}}" class="beer-item drunk" >
 				@else
-					<li class="beer-item" id="{{{$tap->beer_id}}}">
+					<li id="beer-{{{ $tap->beer_id }}}" class="beer-item">
 				@endif
 			@else
-				<li class="beer-item" id="{{{$tap->beer_id}}}">
+				<li id="beer-{{{ $tap->beer_id }}}" class="beer-item">
 			@endif
-			
-			<h3 class="beer-title"><a href="{{{ $tap->tap_link }}}" title="{{{ $tap->tap_name }}}" target="_blank">{{{ $tap->tap_name }}}</a></h3>
-			{{--<h3 class="beer-title">{{$tap->description}}</h3>--}}
 
-			@if (Sentry::check())
-				<div class="beer-action">
+			<div class="beer-actions">
+
+				<div class="beer-toggle">
+					<h3 class="beer-name">{{{ $tap->tap_name }}}</h3>
+				</div>
+
+				@if (Sentry::check())
 					@if(array_key_exists($tap->beer_id, $matches))
-						<span class="label label-success" style="display: none">Saved!</span>
-						<span class="label label-info">On list</span>
-						@if($matches[$tap->beer_id])
-							{{link_to_action('Controllers\Account\ProfileController@unDrinkBeer', '', array($tap->beer_id), array('class' => 'beer-icon', 'title' => 'Undrink this!', 'beer_id' => $tap->beer_id)) }}
-						@else
-							{{link_to_action('Controllers\Account\ProfileController@drinkBeer', '', array($tap->beer_id), array('class' => 'beer-icon', 'title' => 'Drink this!'))}}
-						@endif
+						<div class="beer-cb">
+							<span class="label label-success" style="display: none">Saved!</span>
+							<span class="label label-info">On list</span>
+							@if($matches[$tap->beer_id])
+								{{link_to_action('Controllers\Account\ProfileController@unDrinkBeer', '', array($tap->beer_id), array('class' => 'beer-icon', 'title' => 'Undrink this!', 'beer_id' => $tap->beer_id)) }}
+							@else
+								{{link_to_action('Controllers\Account\ProfileController@drinkBeer', '', array($tap->beer_id), array('class' => 'beer-icon', 'title' => 'Drink this!'))}}
+							@endif
+						</div>
 					@else
 					@endif
-				</div>
 				@else
 				@endif
-			</li>
+
+			</div>
+
+			<div class="beer-info">
+				{{ $tap->description }}
+			</div>
+		</li>
 		@endforeach
 		
-		<li class="beer-item-empty">
-			<h3 class="beer-title">We couldn't find any beers!</h3>
+		<li class="beer-item beer-none">
+			<h3>We couldn’t find any beers!</h3>
 		</li>
 		
 	</ul>

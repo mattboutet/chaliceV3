@@ -1608,6 +1608,7 @@ textarea {
  * Beer ($beer)
  */
 
+/* Beer list navigation */
 .beer-lists {
     margin-top: 2rem;
     font-size: 0;
@@ -1641,10 +1642,9 @@ textarea {
     color: #fff;
 }
 
+/* Beer searchbar */
 .beer-search {
     position: relative;
-    border-left: 2px solid #41415b;
-    border-right: 2px solid #41415b;
 }
 
 .beer-search i {
@@ -1662,13 +1662,189 @@ textarea {
     font-size: 1.333rem;
 }
 
+/* Beer lists */
 .beer {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.beer-item, .beer-item-empty {
+.beer-item {
+    display: block;
+    border-bottom: 2px solid #41415b;
+    background-color: #2c2c3d;
+}
+
+.beer-item.drunk {
+    background-color: #252533;
+}
+
+.beer-actions {
+    display: table;
+    width: 100%;
+}
+
+.beer-style,
+.beer-toggle,
+.beer-cb,
+.beer-info,
+.beer-none {
+    padding: 0.75rem;
+}
+
+.beer-toggle,
+.beer-cb {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.beer-toggle {
+    cursor: pointer;
+}
+
+.beer-name {
+    color: #f3bc4a;
+    margin: 0;
+}
+
+.drunk .beer-name {
+    color: #77779c;
+    text-decoration: line-through;
+}
+
+.beer-style {
+    background-color: #393953;
+}
+
+.beer-style .beer-name {
+    color: #fff;
+}
+
+.beer-cb {
+    text-align: right;
+    min-width: 150px;
+}
+
+.beer-info {
+    font-size: 14px;
+    display: none;
+    padding-top: 0;
+}
+
+/* Checkbox icon */
+.beer-icon,
+.beer-actions input[type="checkbox"] {
+    position: relative;
+    float: right;
+    width: 44px;
+    height: 44px;
+    border: 2px solid #77779c;
+    -webkit-border-radius: 8px;
+    -moz-border-radius:    8px;
+    border-radius:         8px;
+    background-color: #1e1e29;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+.beer-icon:hover,
+.beer-actions input[type="checkbox"]:hover {
+    background-color: #333347;
+}
+
+.drunk .beer-icon,
+.drunk .beer-actions input[type="checkbox"]:checked {
+    background-color: #333347;
+}
+
+.drunk .beer-icon:before,
+.drunk .beer-actions input[type="checkbox"]:checked:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #f3bc4a;
+    content: "\e600";
+    text-align: center;
+    font-size: 24px;
+    font-family: "ca_icons";
+    line-height: 40px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* If no beers were found */
+.beer-none {
+    text-align: center;
+}
+
+.beer-none h3 {
+    color: #77779c;
+    margin: 0;
+}
+
+@media screen and (min-width: 600px) {
+    .beer-lists a {
+        padding: 14px 18px;
+    }
+
+    .beer-search input {
+        font-size: 1.777rem;
+    }
+
+    .beer-style,
+    .beer-toggle,
+    .beer-cb,
+    .beer-info,
+    .beer-none {
+        padding: 1rem;
+    }
+
+    .beer-info {
+        padding-top: 0;
+    }
+
+    .beer-cb .label {
+        margin-right: 0.75rem;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .beer-lists a {
+        font-size: 1.333rem;
+    }
+
+    .beer-lists a:first-child {
+        border-left: 2px solid #41415b;
+    }
+
+    .beer-lists a:last-child {
+        border-right: 2px solid #41415b;
+    }
+
+    .beer-search {
+        border-left: 2px solid #41415b;
+        border-right: 2px solid #41415b;
+    }
+
+    .beer {
+        border-right: 2px solid #41415b;
+        border-left: 2px solid #41415b;
+        -webkit-box-shadow: 0 0 25px hsla(0, 0%, 0%, 0.25);
+        -moz-box-shadow:    0 0 25px hsla(0, 0%, 0%, 0.25);
+        box-shadow:         0 0 25px hsla(0, 0%, 0%, 0.25);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .beer-lists {
+        margin-top: 4rem;
+    }
+}
+
+/*.beer-item, 
+.beer-item-empty {
     display: table;
     position: relative;
     padding: 0.75rem 1rem;
@@ -1811,7 +1987,7 @@ textarea {
     .beer-lists {
         margin-top: 4rem;
     }
-}
+}*/
 
 /**
  * Profile ($profile)
