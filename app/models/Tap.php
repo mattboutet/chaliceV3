@@ -12,7 +12,15 @@ class Tap extends Eloquent {
 	);
 	
 	public static function updateTaps(){
-			
+		
+		//$beer = Beer::find(1);
+		//var_dump($beer->description);
+		//die();
+		//$desc = Beer::untappdLookup($beer->beer_name);
+
+		//$beer->description = $desc;
+		//$beer->save();
+		//return;
 		$url = "http://novareresbiercafe.com/draught.php";
 
 		$html = file_get_html($url);
@@ -41,17 +49,40 @@ class Tap extends Eloquent {
 					$tap =  new Tap;
 					$tap->tap_name = strip_tags($e->innertext);
 					$tap->tap_link = $search_string;
-					
+
 					foreach ($beers as $beer){
 						
 						$beer_name = $beer->beer_name;
-						
+						//print_r($beer->id.PHP_EOL);
+						//var_dump($beer->description);
+						//print_r('========================================');
 						//this may need tweaking to get the right distance 3-4 seems about right.
 						if (levenshtein($beer_name, html_entity_decode($e->innertext)) < 4 ) {
 							//if we find a match, set it and break out of the loop.
 							$tap->beer_id = $beer->id;
+							
+							//if the beer doesn't have desc info, grab it from untappd, otherwise, grab from db
+							if (empty($beer->description)) {
+
+								$desc = Beer::untappdLookup($beer_name);
+
+								$beer->description = $desc;
+								$beer->save();
+
+							}
+							
+							$tap->description = $beer->description;
 							break;		 
 						}
+					}
+//print_r('what?');
+//die();
+					//if we don't have a desc yet
+					if (is_null($tap->description)){
+						
+						$desc = Beer::untappdLookup($tap->tap_name);
+						$tap->description = $desc;
+						
 					}
 					
 					$tap->save();

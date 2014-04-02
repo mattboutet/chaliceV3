@@ -34,7 +34,7 @@ Your list ::
 		@if ($chaliceList->count())
 			<ul class="beer">
 				@if($style = '' && $not_empty = TRUE)@endif {{--super-duper hacky, but blade doesn't allow variable assignment?--}}
-				
+				<h3 class="beer-title">{{Beer::updateDescriptions()}}</h3>
 				@foreach ($chaliceList as $beer)
 					@if($style != $beer->beer_style && !$beer->pivot->checked)
 						<li class="beer-item beer-style">

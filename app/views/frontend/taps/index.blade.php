@@ -37,11 +37,13 @@
 					<li class="beer-item" id="{{{$tap->beer_id}}}">
 				@endif
 			@else
-			<li class="beer-item" id="{{{$tap->beer_id}}}">
+				<li class="beer-item" id="{{{$tap->beer_id}}}">
 			@endif
-				<h3 class="beer-title"><a href="{{{ $tap->tap_link }}}" title="{{{ $tap->tap_name }}}" target="_blank">{{{ $tap->tap_name }}}</a></h3>
+			
+			<h3 class="beer-title"><a href="{{{ $tap->tap_link }}}" title="{{{ $tap->tap_name }}}" target="_blank">{{{ $tap->tap_name }}}</a></h3>
+			{{--<h3 class="beer-title">{{$tap->description}}</h3>--}}
 
-				@if (Sentry::check())
+			@if (Sentry::check())
 				<div class="beer-action">
 					@if(array_key_exists($tap->beer_id, $matches))
 						<span class="label label-success" style="display: none">Saved!</span>
