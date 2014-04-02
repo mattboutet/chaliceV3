@@ -86,7 +86,7 @@
 					@if(is_object(Sentry::getUser()) && Sentry::getUser()->hasAccess('admin'))
 						<p><a href="{{ route('admin') }}" class="button button-primary">Admin</a></p>
 					@endif
-					Built by Matt Boutet<br>Powered by <a href="http://bigroomstudios.com">Big Room Studios</a>
+					Built by Matt Boutet and Chris Bracco<br>Powered by <a href="http://bigroomstudios.com">Big Room Studios</a>
 				</div>
 			</footer>
 		</div>
