@@ -20,7 +20,7 @@ About Chalice ::
 
 	<p>Currently, you can only track your progress with pen and paper, which is risky. If you lose your list you have to start over, and it's always a challenge trying to figure out what's on your list and also currently on tap. We made Chalice, so that we can track our progress from our phones, via this simple web app.</p>
 
-	<p>Note: This app is not affiliated with Novare Res.  It's meant to help you keep track of the beers on your list, but doesn't in any way replace your paper list</p>
+	<p>Note: This app is not affiliated with Novare Res.  It's meant to help you keep track of the beers on your list, but doesn't in any way replace your paper list.</p>
 	<h3 class="h2">How it works</h3>
 
 	<ol>
