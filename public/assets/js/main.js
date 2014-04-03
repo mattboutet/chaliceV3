@@ -85,12 +85,9 @@ $(function() {
 		// these elements match the search terms
 		var matches = $('.beer-item').filter(function() {
 			
-			var upperBeerName = $(this).find('a').html();
+			var upperBeerName = $(this).find('h3').text();
 			
 			if (typeof upperBeerName != "undefined") {
-				var thisBeerName = upperBeerName.toLowerCase();
-			} else {
-				upperBeerName = $(this).find('h3').text();
 				var thisBeerName = upperBeerName.toLowerCase();
 			}
 			searchName = searchName.toLowerCase().trim();
