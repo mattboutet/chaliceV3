@@ -37,6 +37,24 @@ Join ::
 				</p>
 			</div>
 		</div>
+		<label class="control-group">List Version</label>
+		<div class="grid grid-gutter-half">
+
+			<div class="grid-item one-half">
+				<label for="list_version" onclick="">
+					<input type="radio" value="1" id="bare" name="bare" checked="checked">
+					2012
+				</label>
+			</div>
+			
+			<div class="grid-item one-half">
+				<label for="list_version" onclick="">
+					<input type="radio" value="2" id="bare" name="bare">
+					2010
+				</label>
+			</div>
+		</div>
+			<p></p>{{--Chris, This probably makes you cringe, but I needed a bit more vertical space and I'm a hack...--}}
 
 		<!-- Email -->
 		<p class="{{ $errors->first('email', 'error') }}">
