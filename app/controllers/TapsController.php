@@ -29,17 +29,30 @@ class TapsController extends BaseController {
 			$user = Sentry::getUser();
 			
 			$chaliceList = $user->beers()->get();
-		} else {
-			//this should maybe be -1 or some sort of special number?
-			//$chaliceList = User::find(1)->beers()->get();
-		} 	
+			
+		}
 		
 		$matches = array();
 		
 		//this sort of makes my eyes bleed, but it doesn't look like sortBy supports order specification
+		//Ok, this is horrible.  I'm so sorry.
 		$taps = $taps->sortBy((function($tap)
 			{
-				return $tap->beer_id;
+				if (Sentry::check()) {
+			
+					$user = Sentry::getUser();	
+					$chaliceList = $user->beers()->get();
+					
+					$beer = $chaliceList->find($tap->beer_id);
+					if (is_object($beer)){
+						return ($beer->pivot->checked == 0)  ? $tap->beer_id : 0;
+					} else {
+						return 0;
+					}
+				
+				} else {
+					return $tap->beer_id;
+				}
 			}
 		))->reverse();
 		
