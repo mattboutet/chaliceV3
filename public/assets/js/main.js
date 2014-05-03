@@ -5,7 +5,7 @@ $(function() {
 	 * AJAX beer toggle
 	 */
 
-	$('.beer-icon').on('click', function(e) {
+	$('.beer-action').on('click', function(e) {
 		e.preventDefault();
 
 		var $checkbox   = $(this).find(':checkbox'),
