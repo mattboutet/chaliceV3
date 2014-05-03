@@ -57,7 +57,7 @@ class Tap extends Eloquent {
 						//var_dump($beer->description);
 						//print_r('========================================');
 						//this may need tweaking to get the right distance 3-4 seems about right.
-						if (levenshtein($beer_name, html_entity_decode($e->innertext)) < 4 ) {
+						if (levenshtein($beer_name, html_entity_decode($e->innertext)) < 3 ) {
 							//if we find a match, set it and break out of the loop.
 							$tap->beer_id = $beer->id;
 							
