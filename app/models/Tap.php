@@ -36,6 +36,8 @@ class Tap extends Eloquent {
 					!strpos($e->innertext, 'On Cask') &&
 					!strpos($e->innertext, 'Weak Sauce') &&
 					!strpos($e->innertext, 'Bottle Pours') &&
+					!strpos($e->innertext, 'REGULAR DRAUGHTS') &&
+					!strpos($e->innertext, 'MAINE DRAUGHTS') &&
 					strlen(html_entity_decode($e->innertext)) > 2) {
 					
 					$search_string = str_replace(' ', '+', strip_tags($e->innertext));
