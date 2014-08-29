@@ -15,6 +15,8 @@ foreach($html->find('.draughts_reg p') as $e){
 			!strpos($e->innertext, 'On Cask') &&
 			!strpos($e->innertext, 'Weak Sauce') &&
 			!strpos($e->innertext, 'Bottle Pours') &&
+			!strpos($e->innertext, 'REGULAR DRAUGHTS') &&
+			!strpos($e->innertext, 'MAINE DRAUGHTS') &&
 			strlen(html_entity_decode($e->innertext)) > 2) {
 			
 			$searchstring = str_replace(' ', '+', $e->innertext);
@@ -32,12 +34,7 @@ foreach($html->find('.draughts_reg p') as $e){
 		}
 	}
 }
-/*foreach($list as $list_item){
-	print_r($list_item);
-	print_r(PHP_EOL);
-}
-die();*/
-//print_r($list);
+
 $db = new mysqli("localhost", "root", "7gpf6688*", "chalice");
 if ($db->connect_errno) {
     echo "Failed to connect to MySQL: (" . $db->connect_errno . ") " . $db->connect_error;
