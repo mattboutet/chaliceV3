@@ -38,7 +38,7 @@ class FetchTapsCommand extends Command {
 	public function fire()
 	{
 		Tap::updateTaps();
-		print_r('Taplist Successfully Updated');
+		print_r('Taplist Successfully Updated'.PHP_EOL);
 	}
 
 	/**
