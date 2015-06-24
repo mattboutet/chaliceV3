@@ -12,15 +12,7 @@ class Tap extends Eloquent {
 	);
 	
 	public static function updateTaps(){
-		
-		//$beer = Beer::find(1);
-		//var_dump($beer->description);
-		//die();
-		//$desc = Beer::untappdLookup($beer->beer_name);
-
-		//$beer->description = $desc;
-		//$beer->save();
-		//return;
+	
 		$url = "http://novareresbiercafe.com/draught.php";
 
 		$html = file_get_html($url);
@@ -44,7 +36,6 @@ class Tap extends Eloquent {
 					$search_string = str_replace(' ', '+', strip_tags($e->innertext));
 					
 					//this is a hack, but it works ok for now. https://github.com/bannus/novare/blob/master/index.php in the future
-					//untappd api is the shizzle - if only they'd give me a key
 					
 					$search_string = 'http://www.google.com/search?q=site:beeradvocate.com+'.urlencode($search_string).'&btnI=I';
 					
@@ -56,9 +47,7 @@ class Tap extends Eloquent {
 					foreach ($beers as $beer){
 						
 						$beer_name = $beer->beer_name;
-						//print_r($beer->id.PHP_EOL);
-						//var_dump($beer->description);
-						//print_r('========================================');
+	
 						//this may need tweaking to get the right distance 3-4 seems about right.
 						if (levenshtein($beer_name, html_entity_decode($e->innertext)) < 3 ) {
 							//if we find a match, set it and break out of the loop.
@@ -78,8 +67,7 @@ class Tap extends Eloquent {
 							break;		 
 						}
 					}
-//print_r('what?');
-//die();
+
 					//if we don't have a desc yet
 					if (is_null($tap->description)){
 						
@@ -109,8 +97,6 @@ class Tap extends Eloquent {
 					$search_string = str_replace(' ', '+', strip_tags($e->innertext));
 					
 					//this is a hack, but it works ok for now. https://github.com/bannus/novare/blob/master/index.php in the future
-					//untappd api is the shizzle - if only they'd give me a key
-					
 					$search_string = 'http://www.google.com/search?q=site:beeradvocate.com+'.urlencode($search_string).'&btnI=I';
 					
 					
@@ -121,9 +107,6 @@ class Tap extends Eloquent {
 					foreach ($beers as $beer){
 						
 						$beer_name = $beer->beer_name;
-						//print_r($beer->id.PHP_EOL);
-						//var_dump($beer->description);
-						//print_r('========================================');
 						//this may need tweaking to get the right distance 3-4 seems about right.
 						if (levenshtein($beer_name, html_entity_decode($e->innertext)) < 3 ) {
 							//if we find a match, set it and break out of the loop.
@@ -143,8 +126,7 @@ class Tap extends Eloquent {
 							break;		 
 						}
 					}
-//print_r('what?');
-//die();
+
 					//if we don't have a desc yet
 					if (is_null($tap->description)){
 						
